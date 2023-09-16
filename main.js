@@ -9,6 +9,7 @@ import LayerGroup from "ol/layer/Group";
 import {Vector, VectorImage} from "ol/layer";
 import {GeoJSON} from "ol/format";
 import VectorImageLayer from "ol/layer/VectorImage";
+import {Fill, Stroke, Style} from "ol/style";
 // import DividedAreas from "./data/map.geojson";
 //
 // console.log(DividedAreas)
@@ -52,7 +53,16 @@ const fieldsGeoJson = new VectorImageLayer({
     format: new GeoJSON()
   }),
   visible: true,
-  title: "GeoJson"
+  title: "GeoJson",
+  style: new Style({
+    fill: new Fill({
+      color: [85, 118,255,0.6]
+    }),
+    stroke: new Stroke({
+      color: [46,45,45,1],
+      width: 1.2
+    })
+  })
 })
 
 map.addLayer(fieldsGeoJson)
