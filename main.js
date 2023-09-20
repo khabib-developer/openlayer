@@ -10,6 +10,8 @@ import {Vector, VectorImage} from "ol/layer";
 import {GeoJSON} from "ol/format";
 import VectorImageLayer from "ol/layer/VectorImage";
 import {Fill, Stroke, Style} from "ol/style";
+import {createEmpty} from "ol/extent";
+import {fromLonLat} from "ol/proj";
 // import DividedAreas from "./data/map.geojson";
 //
 // console.log(DividedAreas)
@@ -24,10 +26,6 @@ const map = new Map({
     extent: [7986418.6952091735, 4919358.7501129955, 7994915.745798781, 4924770.103558802],
   })
 });
-
-map.on("click", (event) => {
-  console.log(event.coordinate)
-})
 
 const standardLayer = new TileLayer({
   source: new OSM(),
@@ -66,3 +64,13 @@ const fieldsGeoJson = new VectorImageLayer({
 })
 
 map.addLayer(fieldsGeoJson)
+
+map.on("click", evt => {
+  console.log(evt.coordinate)
+  fieldsGeoJson.getFeatures(evt.pixel).then((features) => {
+    if(features.length) {
+      const view = map.getView()
+      view.fit( features[0].getGeometry().getExtent(), {duration: 500, padding: [50, 50, 50, 50]} )
+    }
+  })
+})
