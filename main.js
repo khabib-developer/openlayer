@@ -1,20 +1,33 @@
 import './style.css';
-import {Feature, Map, View} from 'ol';
+import {Map, View} from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import VectorSource from "ol/source/Vector";
-import {LineString} from "ol/geom";
-import VectorLayer from "ol/layer/Vector";
 import LayerGroup from "ol/layer/Group";
-import {Vector, VectorImage} from "ol/layer";
 import {GeoJSON} from "ol/format";
 import VectorImageLayer from "ol/layer/VectorImage";
 import {Fill, Stroke, Style} from "ol/style";
-import {createEmpty} from "ol/extent";
-import {fromLonLat} from "ol/proj";
-// import DividedAreas from "./data/map.geojson";
 //
 // console.log(DividedAreas)
+const defaultStyle = new Style({
+  fill: new Fill({
+    color: [85, 118,255,0.1]
+  }),
+  stroke: new Stroke({
+    color: [46,45,45,1],
+    width: 1
+  })
+})
+
+const selectedStyle = new Style({
+  fill: new Fill({
+    color: [85, 118,255,0.5]
+  }),
+  stroke: new Stroke({
+    color: [46,45,45,1],
+    width: 0.5
+  })
+})
 
 const map = new Map({
   target: 'map',
@@ -37,7 +50,6 @@ const standardLayer = new TileLayer({
 const baseLayerGroup = new LayerGroup({
   layers: [
     standardLayer,
-    // stamenLayer
   ]
 })
 
@@ -47,30 +59,32 @@ map.addLayer(baseLayerGroup)
 
 const fieldsGeoJson = new VectorImageLayer({
   source: new VectorSource({
-    url:"./data/map.geojson",
+    url: new URL("./data/result_geo.json", import.meta.url) ,
     format: new GeoJSON()
   }),
   visible: true,
   title: "GeoJson",
-  style: new Style({
-    fill: new Fill({
-      color: [85, 118,255,0.6]
-    }),
-    stroke: new Stroke({
-      color: [46,45,45,1],
-      width: 1.2
-    })
-  })
+  style: defaultStyle
 })
 
 map.addLayer(fieldsGeoJson)
 
+let selectedFeature = null;
+
 map.on("click", evt => {
-  console.log(evt.coordinate)
   fieldsGeoJson.getFeatures(evt.pixel).then((features) => {
     if(features.length) {
       const view = map.getView()
-      view.fit( features[0].getGeometry().getExtent(), {duration: 500, padding: [50, 50, 50, 50]} )
+
+      if (selectedFeature) {
+        selectedFeature.setStyle(defaultStyle);
+      }
+      // Update the selected feature and set its style
+      selectedFeature = features[0];
+      view.fit( features[0].getGeometry().getExtent(), {duration: 500, padding: [300, 300, 300, 300]} )
+
+      selectedFeature.setStyle(selectedStyle);
+
     }
   })
 })

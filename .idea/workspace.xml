@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6414998-b9cb-4887-974f-94abd5320949" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/result_geo.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,10 +47,23 @@
       <workItem from="1694846121633" duration="6984000" />
       <workItem from="1695013197388" duration="707000" />
       <workItem from="1695103764786" duration="3089000" />
+      <workItem from="1695197763196" duration="4650000" />
+      <workItem from="1695277314515" duration="873000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
