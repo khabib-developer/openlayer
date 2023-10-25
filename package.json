@@ -7,9 +7,12 @@
     "serve": "vite preview"
   },
   "devDependencies": {
+    "tailwindcss": "^3.3.3",
     "vite": "^4.0.4"
   },
   "dependencies": {
+    "apexcharts": "^3.43.0",
+    "axios": "^1.5.1",
     "ol": "latest"
   }
 }

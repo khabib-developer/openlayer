@@ -2,31 +2,100 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://openlayers.org/favicon.ico"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link href="/dist/output.css" rel="stylesheet"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
     <title>Tuproqshunoslik</title>
   </head>
   <body>
     <div id="root">
+      <div
+        class="loader transition-all flex fixed w-full items-center justify-center h-screen bg-white z-40"
+      >
+        <span>Loading...</span>
+      </div>
       <header>
-        <h1>
-          Header
-        </h1>
+        <h1></h1>
       </header>
       <div class="wrapper">
         <div class="sidebar">
-          Sidebar 1
-          <button id="download" class="btn btn-outline-dark" role="button"><i class="fa fa-download"></i> Download PNG</button>
-          <a id="image-download" download="map.png"></a>
+          <div class="mx-5 px-3 py-2 border-2 rounded-md features">
+            <div class="flex gap-2">
+              <input type="radio" id="humus" name="module" value="humus" />
+              <label for="humus">Humus</label>
+            </div>
+
+            <div class="flex gap-2">
+              <input type="radio" id="fosfor" name="module" value="fosfor" />
+              <label for="fosfor">fosfor</label>
+            </div>
+          </div>
+          <form class="search mt-3 mx-5 px-4 flex">
+            <input
+              type="text"
+              class="w-full border-b-2 outline-0"
+              placeholder="Kontur raqami"
+            />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <div class="mx-5 px-3 mt-4 py-2 border-2 rounded-md features">
+            <div class="flex gap-2">
+              <input type="radio" id="monthly" name="monitor" value="monthly" />
+              <label for="monthly">Oylik</label>
+            </div>
+
+            <div class="flex gap-2">
+              <input type="radio" id="quarter" name="monitor" value="quarter" />
+              <label for="quarter">Chorak</label>
+            </div>
+
+            <div class="flex gap-2">
+              <input type="radio" id="year" name="monitor" value="year" />
+              <label for="year">Yillik</label>
+            </div>
+          </div>
         </div>
         <div id="map"></div>
         <div class="sidebar">
-          Sidebar 2
-        </div>
+          <div>
+            <button id="download" class="btn btn-outline-dark" role="button">
+              <i class="fa fa-download"></i> Download PNG
+            </button>
 
+            <h2>Ob havo</h2>
+            <div
+              class="flex flex-col py-3 px-5 text-slate-900 weather__wrapper"
+            >
+              <!--              <div class="flex items-center hover:bg-slate-100 cursor-pointer rounded-md w-full justify-between px-3">-->
+              <!--                <span class="text-base">Wed, Oct 11</span>-->
+              <!--                <div class="flex items-center text-base">-->
+              <!--                  <img width="" alt="" src="https://openweathermap.org/img/w/10d.png" />-->
+              <!--                  <span>-->
+              <!--                    22 / 16°C-->
+              <!--                  </span>-->
+              <!--                  <span class="pl-4 text-sm text-gray-500">light rain</span>-->
+              <!--                </div>-->
+              <!--              </div>-->
+            </div>
+          </div>
+
+          <div class="px-5 py-3">
+            <div id="chart"></div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

@@ -2,8 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6414998-b9cb-4887-974f-94abd5320949" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/Barlos.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Baxor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Beruniy.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Konturs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/mirzoobod.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/polygon.geojson" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/tuman_chegarasi.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/chart/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vectorLayers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/weather/weather.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,25 +29,38 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2VT3CsUbgS5X9NW5xYch8Y1eBbR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Project.color&quot;: &quot;283c05&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Project.color": "283c05",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.nodejs.core.library.configured.version": "16.20.2",
+    "javascript.nodejs.core.library.typings.version": "16.18.58",
+    "last_opened_file_path": "/Users/macbookpro/Desktop/airi/openlayers/data",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/styles" />
+      <recent name="$PROJECT_DIR$/src/weather" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -53,7 +81,16 @@
       <workItem from="1695626784828" duration="1385000" />
       <workItem from="1695979455630" duration="958000" />
       <workItem from="1696063299006" duration="128000" />
-      <workItem from="1696935688677" duration="318000" />
+      <workItem from="1696935688677" duration="1774000" />
+      <workItem from="1697004846324" duration="10873000" />
+      <workItem from="1697099238142" duration="1474000" />
+      <workItem from="1697179595788" duration="5819000" />
+      <workItem from="1697437044034" duration="1971000" />
+      <workItem from="1697522786973" duration="811000" />
+      <workItem from="1697796883915" duration="263000" />
+      <workItem from="1698055615619" duration="12000" />
+      <workItem from="1698127330707" duration="1113000" />
+      <workItem from="1698222431593" duration="8054000" />
     </task>
     <servers />
   </component>
