@@ -73,10 +73,6 @@ function giveRecommendations(modules, item) {
    wrapper.innerHTML = modules.map((module, index) => {
       const level = item[featureFieldNames[index]]
 
-      if(index === 3) {
-         console.log(featureFieldNames[index])
-      }
-
       const suggestion = index === 3 ? recommendationText[index][level-1][+item['mex'] - 1] : recommendationText[index][level-1]
 
       return (
