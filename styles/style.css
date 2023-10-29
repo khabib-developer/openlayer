@@ -63,8 +63,11 @@ header h1 {
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,255,59,1) 50%, rgba(255,111,0,1) 100%);
 }
 
-.sidebar {
+.sidebar, .sidebar .sub-sidebar {
   max-height: 100vh;
+}
+
+.sidebar:first-child, .sidebar .sub-sidebar {
   overflow-y: auto;
 }
 
@@ -104,6 +107,8 @@ header h1 {
     transition: all 0.2s ease;
     height: 100vh;
     z-index: 9999;
+    top: -10px;
+    border:1px solid
   }
 
   .sidebar:first-child {

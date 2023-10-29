@@ -4,9 +4,13 @@
     <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/chart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chart/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/search.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/search.hook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map/massives/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/massives/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/renderColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/renderModules.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/renderModules.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/weather/weather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/weather/weather.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
     </list>
@@ -53,7 +57,7 @@
       <workItem from="1698336598117" duration="25414000" />
       <workItem from="1698420217783" duration="3126000" />
       <workItem from="1698474255138" duration="23533000" />
-      <workItem from="1698558842654" duration="12623000" />
+      <workItem from="1698558842654" duration="15817000" />
     </task>
     <servers />
   </component>

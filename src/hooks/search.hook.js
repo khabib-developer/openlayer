@@ -3,6 +3,7 @@ import {renderInformation} from "../modules/information";
 import {globalMassives, sectionsData} from "../map";
 import {colorInformation, featureFieldNames, featuresNames} from "../modules/renderModules";
 import {chooseTextColor} from "../utils";
+import {defaultMassiveStyle, selectedMassiveStyle} from "../map/massives";
 
 
 const selectedStyle = (fill, stroke, text, textColor) => new Style({
@@ -62,7 +63,7 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
 
    e.preventDefault();
 
-   if (selectedFeatureSearch) {
+   if (selectedFeatureSearch && section) {
       section.setStyle(function (feature) {
          const item = sectionsData.find(item => +item.counter_id === +feature.getProperties()['Kontur_raq'])
          const level = item[featureFieldNames[moduleNumber]]
@@ -72,6 +73,9 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
              chooseTextColor(value)
          );
       });
+      selectedFeatureSearch.setStyle(function(feature) {
+         return defaultMassiveStyle(feature.getProperties()["name"])
+      })
    }
 
    sections.getSource().forEachFeature(feature => {
@@ -112,6 +116,12 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
                  chooseTextColor(level)
              )
          );
+         selectedFeatureSearch.setStyle(
+             selectedMassiveStyle(
+                 selectedFeatureSearch.getProperties()["name"],
+                 standOutColors[moduleNumber]
+             ),
+         )
       }
    }
 

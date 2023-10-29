@@ -66,7 +66,7 @@ function renderFeatures(modules, wrapper) {
 
    wrapper.innerHTML = modules.map(function(module, index) {
       return (`
-         <div class="radiobtn md:text-sm">
+         <div class="radiobtn text-sm">
             <input type="radio" ${+module.id===1&&'checked'} id="${module.name}" name="module" value="${module.id}" />
             <label class="" for="${module.name}">${module.name}</label>
          </div>

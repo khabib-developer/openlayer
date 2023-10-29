@@ -23,9 +23,7 @@
 </head>
 <body>
 <div id="root">
-    <div
-            class="loader transition-all flex fixed w-full items-center justify-center h-screen bg-white z-40"
-    >
+    <div class="loader transition-all flex fixed w-full items-center justify-center h-screen bg-white z-40">
         <span class="loader-custom"></span>
     </div>
     <div class="error transition-all flex hidden fixed w-full items-center justify-center h-screen bg-white z-40"
@@ -34,7 +32,7 @@
     </div>
     <header>
     </header>
-    <div class="wrapper justify-center relative overflow-hidden">
+    <div class="wrapper justify-center relative">
         <div class="sidebar">
             <div class="wrap mx-5 hidden lg:block">
                 <form class="search text-sm">
@@ -107,7 +105,8 @@
                 </form>
             </div>
         </div>
-        <div class="sidebar pb-4">
+        <div class="sidebar ">
+            <div class="sub-sidebar pb-4 pt-1 lg:pt-0">
             <div>
                 <a id="image-download" download="map.png"></a>
                 <div class="px-5">
@@ -180,7 +179,9 @@
 
 
             </div>
-            <div class="lg:hidden absolute p-2 text-black font-light bg-[#d4d4d4] top-[45px] -left-[32px]">
+
+            </div>
+            <div class="lg:hidden block absolute p-2 text-black font-light bg-[#d4d4d4] top-[45px] -left-[32px]">
                 <div class="toggleSecondSideBar">
                     <i class="fa fa-arrow-left"></i>
                 </div>
