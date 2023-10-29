@@ -4,7 +4,7 @@ export const colorInformation = [
     [
        "rgb(255,255,0)",
        "rgb(204,255,153)",
-       "rgb(255,255,255)",
+       "#9aff65",
        "rgb(0,255,0)",
        "rgb(102,153,0)",
     ],
@@ -38,16 +38,61 @@ export const colorInformation = [
    ],
 ]
 
+export const recommendedColorInformation = [
+   [
+      "#806000",
+      "#bf8f02",
+      "#ffd966",
+      "#ffd966",
+      "#ffd966",
+   ],
+   [
+      "#385623",
+      "#548135",
+      "#a8d08d",
+      "#c6e0b3",
+      "#e2f0d9",
+   ],
+   [
+      "#385623",
+      "#548135",
+      "#a8d08d",
+      "#c6e0b3",
+      "#e2f0d9",
+   ],
+   [
+      "#d9e2f3",
+      "#b4c6e7",
+      "#8eaadb",
+      "#4976c7",
+      "#2f5496",
+      "#1f3864",
+   ],
+   [
+      "#806000",
+      "#bf8f02",
+      "#ffd966",
+      "#ffd966",
+      "#ffd966",
+   ],
+]
+
+export const recommendationsButtons = ["Mahalliy o'g'itlar", "Fosforli o'g'itlar", "Kaliyli o'g'itlar", "Sho'r yuvish"]
+
 export let featuresNames = null;
+
+export let activeFeaturesNames = null
 
 export const featureFieldNames = ["gumus", "fosfor", "kaliy", "shorlanish", "namlik"]
 
 export function renderModules(modules) {
    const featuresWrapper = document.querySelector(".features")
+   const recommendationWrapper = document.querySelector(".recommendationWrapper")
+   const recommendationLink = document.querySelector("a.tab-nav-0[href='#recommendation']")
    const searchModule = document.querySelector(".search")
    const monitor = document.querySelector(".monitor")
    const weather = document.querySelector(".weather")
-   const suggestions = document.querySelector(".suggestions")
+   const suggestions = document.querySelector(".suggestion")
 
    !modules[5].status&&monitor.classList.add("hidden")
 
@@ -55,32 +100,56 @@ export function renderModules(modules) {
 
    !modules[7].status&&searchModule.classList.add("hidden")
 
-   !modules[8].status&&suggestions.classList.add("hidden")
+   if(!modules[8].status) {
+      recommendationLink.classList.add('hidden')
+      suggestions.classList.add("hidden")
+   }
 
-   featuresNames = modules.filter((module, i) => module.status && i < 5).map(module => module.name)
+   activeFeaturesNames = modules.filter((module, i) => module.status && i < 5)
 
-   renderFeatures(modules.filter((module, i) => module.status && i < 5), featuresWrapper)
+   featuresNames = activeFeaturesNames.map(module => module.name)
+
+   renderFeatures(
+       activeFeaturesNames,
+       featuresWrapper,
+       recommendationWrapper,
+       modules
+   )
 }
 
-function renderFeatures(modules, wrapper) {
+function renderFeatures(modulesArray, wrapper, wrapper2, modules) {
 
-   wrapper.innerHTML = modules.map(function(module, index) {
+   wrapper.innerHTML = modulesArray.map(function(module, index) {
       return (`
          <div class="radiobtn text-sm">
-            <input type="radio" ${+module.id===1&&'checked'} id="${module.name}" name="module" value="${module.id}" />
+            <input type="radio" ${+module.id===modulesArray[0].id&&'checked'} id="${module.name}" name="module" value="${module.id}" />
             <label class="" for="${module.name}">${module.name}</label>
          </div>
       `)
    }).join("")
 
-   handleClickModules()
+   wrapper2.innerHTML = recommendationsButtons.map(function(text, index) {
 
+      if(modules[index].status)
+         return (`
+            <div class="radiobtn text-sm">
+               <input type="radio" id="${text}" name="module" value="${text}" />
+               <label class="" for="${text}">${text}</label>
+            </div>
+         `)
+   }).join("")
+
+   handleClickModules()
 }
 
 function handleClickModules() {
    document.querySelectorAll("input[name='module']").forEach(function(element) {
       element.addEventListener("change", event => {
          const value = event.target.value;
+         if(isNaN(Number(value))) {
+            renderColors.changeFeaturesColorsWithRecommendedColors(recommendationsButtons.findIndex(item => item === value))
+            return
+         }
          changeColor(value)
          renderColors.changeFeaturesColors(value)
       })

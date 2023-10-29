@@ -42,14 +42,56 @@
                     </button>
                 </form>
             </div>
-            <h2 class="text-start flex justify-between mt-5 2xl:mt-5 text-sm 2xl:text-lg mt-10 mx-5">
-                <span>Xususiyatlar</span>
-                <span class="firstSideBarCloseBtn lg:hidden block">
-                    <i class="fa fa-arrow-left"></i>
-                </span>
-            </h2>
-            <div class="mx-5 mt-5 2xl:mt-8 features">
+            <ul class="2xl:mt-5 text-sm  2xl:text-lg mt-10 mx-5 flex mt-0  list-none flex-row flex-wrap border-b-0 pl-0 "
+                role="tablist"
+                data-te-nav-ref>
+                <li role="presentation" class="flex-1">
+                    <a
+                            href="#state"
+                            class=" block tab-nav-0 border-2 border-[#4267B2] bg-[#4267B2] py-2 text-xs font-medium uppercase leading-tight text-white hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
+                            data-te-toggle="pill"
+                            data-te-target="#state"
+                            data-te-nav-active
+                            role="tab"
+                            aria-controls="tabs-home"
+                            aria-selected="true"
+                    >Holat</a
+                    >
+                </li>
+                <li role="presentation" class="flex-1">
+                    <a
+                            href="#recommendation"
+                            class="block tab-nav-0 border-2 border-[#4267B2]  py-2 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
+                            data-te-toggle="pill"
+                            data-te-target="#recommendation"
+                            role="tab"
+                            aria-controls="tabs-profile"
+                            aria-selected="false"
+                    >Tavsiya</a
+                    >
+                </li>
+            </ul>
+            <!--Tabs content-->
+            <div class="hidden features opacity-100 mx-5 mt-5 2xl:mt-8 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                 id="state"
+                 role="tabpanel"
+                 aria-labelledby="tabs-home-tab"
+                 data-te-tab-active>
+
             </div>
+            <div class="hidden recommendationWrapper mx-5 mt-5 2xl:mt-8 opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                 id="recommendation"
+                 role="tabpanel"
+                 aria-labelledby="tabs-profile-tab">
+            </div>
+<!--            <h2 class="text-start flex justify-between mt-5 2xl:mt-5 text-sm 2xl:text-lg mt-10 mx-5">-->
+<!--                <span>Xususiyatlar</span>-->
+            <span class="firstSideBarCloseBtn lg:hidden block absolute top-[10px] right-[10px]">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+<!--            </h2>-->
+<!--            <div class="mx-5 mt-5 2xl:mt-8 features">-->
+<!--            </div>-->
             <h2 class="text-start 2xl:mt-8 mt-5 2xl:text-lg text-sm mx-5">Monitoring</h2>
             <div class="mx-5 2xl:mt-5 mt-5 monitor">
                 <div class="radiobtn text-sm">
@@ -162,7 +204,7 @@
                         </li>
                     </ul>
                     <!--Tabs content-->
-                    <div class="mb-0">
+                    <div class="mb-1">
                         <div class="hidden information-wrapper opacity-100 2xl:px-5 px-2 text-sm flex flex-col gap-2 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
                              id="tabs-home"
                              role="tabpanel"
@@ -179,7 +221,6 @@
 
 
             </div>
-
             </div>
             <div class="lg:hidden block absolute p-2 text-black font-light bg-[#d4d4d4] top-[45px] -left-[32px]">
                 <div class="toggleSecondSideBar">

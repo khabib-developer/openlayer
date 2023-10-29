@@ -2,6 +2,16 @@
 
 export function activateTabs() {
    const tabNavs = document.querySelectorAll(".tab-nav")
+   const tabNavsFirstSideBar = document.querySelectorAll(".tab-nav-0")
+
+   tabs(tabNavs)
+   tabs(tabNavsFirstSideBar)
+   // tabNavs.forEach(item => tabs(item))
+}
+
+
+function tabs(tabNavs) {
+
 
    tabNavs.forEach(function (element, index) {
       element.addEventListener("click", function() {

@@ -76,8 +76,8 @@ function giveRecommendations(modules, item) {
       const suggestion = index === 3 ? recommendationText[index][level-1][+item['mex'] - 1] : recommendationText[index][level-1]
 
       return (
-          `<div class="flex gap-3">
-              <div class="capitalize text-xs">${module}: <span class="pl-2"> ${suggestion} </span></div>
+          `<div class="flex justify-between">
+              <div class="capitalize md:text-xs text-sm">${module}: <span class="pl-2"> ${suggestion} </span></div>
               <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md border-2 border-black recommendation">
                   <div class="absolute transition-all w-[5px] h-full bg-black" style="left:${20*level - 5}%"></div>
               </div>

@@ -11,7 +11,7 @@ import {searchSection} from "../hooks/search.hook";
 import {downloadHook} from "../hooks/download.hook";
 import renderColors from "./renderColors";
 import {renderInformation} from "../modules/information";
-import {featuresNames} from "../modules/renderModules";
+import {activeFeaturesNames, featuresNames} from "../modules/renderModules";
 
 const mapExtent = [
   7578606.048414063, 4895149.150804532, 7700339.7697632, 4970917.816961464,
@@ -78,22 +78,27 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
     const { sections} = drawSections(map);
     const { massives } = drawMassives(map);
     globalMassives = massives
-    sectionsData = await renderColors.setData(sections)
+    if(activeFeaturesNames.length) {
+      sectionsData = await renderColors.setData(sections, activeFeaturesNames[0].id)
 
-    const defaultItem = sectionsData.find(item => +item.counter_id === 1)
+      if(sections) {
+        const defaultItem = sectionsData[0]
 
-    if(!defaultItem)
-      return
+        if(!defaultItem)
+          return
 
-    renderInformation(
-        featuresNames,
-        defaultItem,
-        massives.getProperties().source.getFeatureById(defaultItem.massiv).getProperties()['name']
-    )
+        renderInformation(
+            featuresNames,
+            defaultItem,
+            massives.getProperties().source.getFeatureById(defaultItem.massiv).getProperties()['name']
+        )
 
-    searchForm.forEach(function (element, index) {
-      element.addEventListener("submit", e => searchSection(e, sections, massives, map, searchInput[index].value));
-    })
+        searchForm.forEach(function (element, index) {
+          element.addEventListener("submit", e => searchSection(e, sections, massives, map, searchInput[index].value));
+        })
+      }
+    }
+
 
   }
 
