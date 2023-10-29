@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #4267B2;
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #4c4848;
+    height:36px;
+}
+
+.searchTerm:focus{
+    color: #4c4848;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #4267B2;
+    background: #4267B2 !important;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.mobileSearch .searchButton:first-child {
+    border-radius: 5px 0 0 5px;
+    border: none;
+    padding-left: 2px;
+}
+
+.mobileSearch .searchTerm {
+    border-radius: 0 !important
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    height: 36px !important;
+
+}

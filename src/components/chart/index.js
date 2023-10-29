@@ -1,6 +1,10 @@
 import ApexCharts from 'apexcharts'
 
-const options = (labels,data) => ({
+const md = window.innerWidth<1500
+
+const extralarge = window.innerWidth > 2300
+
+const options = (labels,data, height) => ({
    series: [{
       name: "Temperature",
       data: data
@@ -8,7 +12,7 @@ const options = (labels,data) => ({
 
    chart: {
       type: 'area',
-      height: 350,
+      height: md?220:350,
       zoom: {
          enabled: false
       },
@@ -17,9 +21,9 @@ const options = (labels,data) => ({
       enabled: false
    },
    stroke: {
-      curve: 'straight'
+      curve: "smooth"
    },
-   colors: ['#FF7F00'],
+   colors: ['#4267B2'],
    title: {
       text: "Today's Hourly Temperature",
       align: 'left'
@@ -27,6 +31,16 @@ const options = (labels,data) => ({
    labels,
    xaxis: {
       type: 'string',
+      labels: {
+         formatter: function(value) {
+            if(!extralarge && value) {
+               let hours = value.length > 4 ? value.slice(0,2):value.slice(0,1)
+
+               return (Number( hours ) % 4 === 0)?value:""
+            }
+            return value
+         }
+      }
    },
    yaxis: {
       opposite: true

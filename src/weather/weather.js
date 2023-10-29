@@ -17,27 +17,26 @@ export async function weather() {
   function dailyWeatherComponent(item, day) {
     return `
          <div class="flex items-center hover:bg-slate-100 cursor-pointer rounded-md w-full justify-between px-3">
-          <span class="text-base flex-1 text-start">${day
+          <span class="2xl:text-base flex-1 text-sm text-start">${day
             .toString()
             .slice(0, 10)}</span>
           <div class="flex flex-1 items-center text-base">
-            <div class="flex items-center">
-                 <img width="" alt="" src="https://openweathermap.org/img/w/${
+            <div class="flex items-center gap-0 gap-2">
+                 <img width="" alt="" class="w-1/4 2xl:w-auto" src="https://openweathermap.org/img/w/${
                    item.weather[0].icon
                  }.png" />
-                  <span>
+                  <span class="text-base text-sm">
                     ${Math.ceil(item.temp.max)} / ${Math.ceil(item.temp.min)}°C
                   </span>     
             </div>
-            <span class="pl-4 text-xs text-end flex-1 text-gray-500">${
+            <span class="pl-4 text-xs text-end flex-1 hidden 2xl:block text-gray-500">${
               item.weather[0].description
             }</span>
           </div>
-        </div>
-      `;
+        </div>`;
   }
 
-  const daily = await service("/api/modul/weather3-daily/");
+  const daily = await service("/api/modul/weather7-daily/");
 
   const hourly = await service("/api/modul/weather24-hourly/");
 

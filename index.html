@@ -1,101 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://openlayers.org/favicon.ico"
+            rel="icon"
+            type="image/x-icon"
+            href="https://openlayers.org/favicon.ico"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- <link href="/dist/output.css" rel="stylesheet"> -->
+    <link href="/styles/loader.css" rel="stylesheet">
+    <link href="/styles/modules.css" rel="stylesheet">
+    <link href="/styles/search.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
-      crossorigin="anonymous"
+            defer
+            src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+            integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+            crossorigin="anonymous"
     ></script>
     <title>Tuproqshunoslik</title>
-  </head>
-  <body>
-    <div id="root">
-      <div
-        class="loader transition-all flex fixed w-full items-center justify-center h-screen bg-white z-40"
-      >
-        <span>Loading...</span>
-      </div>
-      <header>
-        <h1></h1>
-      </header>
-      <div class="wrapper">
-        <div class="sidebar">
-          <div class="mx-5 px-3 py-2 border-2 rounded-md features">
-            <div class="flex gap-2">
-              <input type="radio" id="humus" name="module" value="humus" />
-              <label for="humus">Humus</label>
-            </div>
-
-            <div class="flex gap-2">
-              <input type="radio" id="fosfor" name="module" value="fosfor" />
-              <label for="fosfor">fosfor</label>
-            </div>
-          </div>
-          <form class="search mt-3 mx-5 px-4 flex">
-            <input
-              type="text"
-              class="w-full border-b-2 outline-0"
-              placeholder="Kontur raqami"
-            />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-          <div class="mx-5 px-3 mt-4 py-2 border-2 rounded-md features">
-            <div class="flex gap-2">
-              <input type="radio" id="monthly" name="monitor" value="monthly" />
-              <label for="monthly">Oylik</label>
-            </div>
-
-            <div class="flex gap-2">
-              <input type="radio" id="quarter" name="monitor" value="quarter" />
-              <label for="quarter">Chorak</label>
-            </div>
-
-            <div class="flex gap-2">
-              <input type="radio" id="year" name="monitor" value="year" />
-              <label for="year">Yillik</label>
-            </div>
-          </div>
-        </div>
-        <div id="map"></div>
-        <div class="sidebar">
-          <div>
-            <button id="download" class="btn btn-outline-dark" role="button">
-              <i class="fa fa-download"></i> Download PNG
-            </button>
-
-            <h2>Ob havo</h2>
-            <div
-              class="flex flex-col py-3 px-5 text-slate-900 weather__wrapper"
-            >
-              <!--              <div class="flex items-center hover:bg-slate-100 cursor-pointer rounded-md w-full justify-between px-3">-->
-              <!--                <span class="text-base">Wed, Oct 11</span>-->
-              <!--                <div class="flex items-center text-base">-->
-              <!--                  <img width="" alt="" src="https://openweathermap.org/img/w/10d.png" />-->
-              <!--                  <span>-->
-              <!--                    22 / 16°C-->
-              <!--                  </span>-->
-              <!--                  <span class="pl-4 text-sm text-gray-500">light rain</span>-->
-              <!--                </div>-->
-              <!--              </div>-->
-            </div>
-          </div>
-
-          <div class="px-5 py-3">
-            <div id="chart"></div>
-          </div>
-        </div>
-      </div>
+</head>
+<body>
+<div id="root">
+    <div
+            class="loader transition-all flex fixed w-full items-center justify-center h-screen bg-white z-40"
+    >
+        <span class="loader-custom"></span>
     </div>
-    <script type="module" src="src/main.js"></script>
-  </body>
+    <div class="error transition-all flex hidden fixed w-full items-center justify-center h-screen bg-white z-40"
+    >
+        <span class="text-center">Afsuski, server vaqtinchalik ish faoliyatida emas :( <br> Adminlarga bog'laning</span>
+    </div>
+    <header>
+    </header>
+    <div class="wrapper justify-center relative overflow-hidden">
+        <div class="sidebar">
+            <div class="wrap mx-5 lg:hidden block">
+                <form class="search text-sm">
+                    <input type="text" class="searchTerm" placeholder="Kontur raqami">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <h2 class="text-start flex justify-between mt-5 2xl:mt-5 text-sm 2xl:text-lg mt-10 mx-5">
+                <span>Xususiyatlar</span>
+                <span class="firstSideBarCloseBtn hidden lg:block">
+                    <i class="fa fa-arrow-left"></i>
+                </span>
+            </h2>
+            <div class="mx-5 mt-5 2xl:mt-8 features">
+            </div>
+            <h2 class="text-start 2xl:mt-8 mt-5 2xl:text-lg text-sm mx-5">Monitoring</h2>
+            <div class="mx-5 2xl:mt-5 mt-5 monitor">
+                <div class="radiobtn text-sm">
+                    <input checked type="radio" id="monthly" name="monitor" value="monthly"/>
+                    <label for="monthly">Oylik</label>
+                </div>
+
+                <div class="radiobtn text-sm">
+                    <input type="radio" id="quarter" name="monitor" value="quarter"/>
+                    <label for="quarter">Chorak</label>
+                </div>
+
+                <div class="radiobtn text-sm">
+                    <input type="radio" id="year" name="monitor" value="year"/>
+                    <label for="year">Yillik</label>
+                </div>
+
+            </div>
+            <h2 class="text-start 2xl:mt-10 mt-5 2xl:text-lg text-sm mx-5">Ranglar haqida ma'lumot</h2>
+            <div class="mx-5 2xl:mt-5 flex flex-col 2xl:gap-1 gap-0 color-information">
+                <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
+                    <div class="border-2 level_1 border-gray-900  h-[15px] w-[25px]"></div>
+                    <span>Juda Kam</span>
+                </div>
+                <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
+                    <div class="border-2 level_2 border-gray-900  h-[15px] w-[25px]"></div>
+                    <span>Kam</span>
+                </div>
+                <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
+                    <div class="border-2 level_3 border-gray-900  h-[15px] w-[25px]"></div>
+                    <span>O'rtacha</span>
+                </div>
+                <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
+                    <div class="border-2 level_4 border-gray-900  h-[15px] w-[25px]"></div>
+                    <span>Ko'p</span>
+                </div>
+                <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
+                    <div class="border-2 level_5 border-gray-900  h-[15px] w-[25px]"></div>
+                    <span>Juda Ko'p</span>
+                </div>
+            </div>
+        </div>
+        <div id="map">
+            <div class="wrap z-[1] mobileSearch lg:hidden absolute">
+                <form class="search text-sm">
+                    <button type="button" class="searchButton firstSideBarShow">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <input type="text" class="searchTerm" placeholder="Kontur raqami">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div>
+                <a id="image-download" download="map.png"></a>
+                <div class="px-5">
+                    <button id="download"
+                            class="btn btn-outline-dark text-sm border-2 rounded-md w-full 2xl:py-2 py-1 border-gray-500"
+                            role="button">
+                        <i class="fa fa-download"></i> <span class="px-3">Karta rasmini yuklab olish</span>
+                    </button>
+                </div>
+
+
+                <div class="weather 2xl:mt-10 mt-5">
+                    <h2 class="text-start 2xl:text-lg text-sm px-5">Ob havo</h2>
+                    <div class="flex flex-col 2xl:py-3 2xl:px-5 py-1 px-2 text-slate-900 weather__wrapper"></div>
+                </div>
+
+            </div>
+
+            <div class="px-5 py-3 py-0 px-2">
+                <div id="chart"></div>
+            </div>
+            <div class="suggestion mt-5 px-5 mt-1 px-2">
+                <h5 class="text-start 2xl:text-lg text-sm ">Massiv: <span class="selectedMassivName">1</span></h5>
+                <h5 class="text-start 2xl:text-lg text-sm">Kontur raqami: <span class="selectedSectionNumber">1</span></h5>
+                <div class="border-2 rounded border-[#4267B2] 2xl:mt-5 mt-1">
+                    <ul class="2xl:mb-5 mb-2 flex mt-0 list-none flex-row flex-wrap border-b-0 pl-0 "
+                        role="tablist"
+                        data-te-nav-ref>
+                        <li role="presentation" class="flex-1">
+                            <a
+                                    href="#tabs-home"
+                                    class=" block border-x-0 tab-nav border-b-2 border-b-[#4267B2] border-t-0 bg-[#4267B2] pb-3.5 pt-4 py-2 text-xs font-medium uppercase leading-tight text-white hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
+                                    data-te-toggle="pill"
+                                    data-te-target="#tabs-home"
+                                    data-te-nav-active
+                                    role="tab"
+                                    aria-controls="tabs-home"
+                                    aria-selected="true"
+                            >Ma'lumot</a
+                            >
+                        </li>
+                        <li role="presentation" class="flex-1">
+                            <a
+                                    href="#tabs-profile"
+                                    class="block border-x-0 tab-nav border-b-2 border-b-[#4267B2] border-t-0 border-transparent pb-3.5 pt-4 py-2 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
+                                    data-te-toggle="pill"
+                                    data-te-target="#tabs-profile"
+                                    role="tab"
+                                    aria-controls="tabs-profile"
+                                    aria-selected="false"
+                            >Tavsiya</a
+                            >
+                        </li>
+                    </ul>
+                    <!--Tabs content-->
+                    <div class="mb-6 mb-2">
+                        <div class="hidden information-wrapper opacity-100 2xl:px-5 px-2 text-sm flex flex-col gap-2 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                             id="tabs-home"
+                             role="tabpanel"
+                             aria-labelledby="tabs-home-tab"
+                             data-te-tab-active></div>
+                        <div class="hidden recommendation-wrapper 2xl:px-5 px-2 text-sm flex flex-col gap-2 opacity-0 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                            id="tabs-profile"
+                            role="tabpanel"
+                            aria-labelledby="tabs-profile-tab">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="lg:hidden absolute p-2 text-black font-light bg-[#d4d4d4] top-[45px] -left-[32px]">
+                <div class="toggleSecondSideBar">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
+                <div class="toggleSecondSideBar hidden">
+                    <i class="fa fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
 </html>
