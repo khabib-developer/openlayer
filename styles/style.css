@@ -112,12 +112,12 @@ header h1 {
   }
 
   .sidebar:first-child {
-    transform: translateX(-251px);
+    transform: translateX(-290px);
   }
 
-
   .sidebar.active {
-    transform: translateX(0) !important
+    transform: translateX(0) !important;
+    left: 0;
   }
 
   .sidebar:last-child {
