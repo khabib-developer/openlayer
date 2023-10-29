@@ -113,6 +113,7 @@ header h1 {
 
   .sidebar:first-child {
     transform: translateX(-290px);
+    left: 0;
   }
 
   .sidebar.active {
