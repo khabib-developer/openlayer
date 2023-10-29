@@ -77,7 +77,7 @@ export const recommendedColorInformation = [
    ],
 ]
 
-export const recommendationsButtons = ["Mahalliy o'g'itlar", "Fosforli o'g'itlar", "Kaliyli o'g'itlar", "Sho'r yuvish"]
+export const recommendationsButtons = ["Mahalliy o'g'itlar", "Fosforli o'g'itlar", "Kaliyli o'g'itlar", "Sho'r yuvish", "Sug'orish"]
 
 export let featuresNames = null;
 
