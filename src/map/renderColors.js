@@ -9,7 +9,7 @@ class RenderColors {
    sections = []
 
    async setData(sections, value) {
-      const result = await service("/api/modul/counter-db/")
+      const result = await service(`/api/modul/counter-db/`)
       if(result) {
          this.data = result
          await delay(500)
@@ -18,6 +18,16 @@ class RenderColors {
          return this.data
       }
       return null
+   }
+
+   async changeData(value, param = "", recommendation) {
+      const result = await service(`/api/modul/counter-db/${param}`)
+
+      if(result) {
+         this.data = result
+         recommendation?this.changeFeaturesColorsWithRecommendedColors(value):this.changeFeaturesColors(value + 1)
+         return this.data
+      }
    }
 
    changeFeaturesColors(value) {

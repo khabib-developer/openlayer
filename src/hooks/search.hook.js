@@ -56,24 +56,28 @@ const recommendationStandoutColor = '#FFFB01'
 let selectedFeatureSearch = null
 let section = null
 
-export function searchSection(e, sections, massives, map, value, source, baseLayer) {
-
+export function findOutActiveModule() {
    const modules = document.querySelectorAll("input[name='module']")
-
    let moduleNumber = 0
-
-   let count = 0;
 
    modules.forEach((module, i) => {
       if (module.checked) moduleNumber = i
    })
 
-   e.preventDefault();
-
    const recommendation = moduleNumber > 4
 
    moduleNumber = recommendation ? moduleNumber - 5 : moduleNumber
 
+   return {recommendation, moduleNumber}
+}
+
+export function searchSection(e, sections, massives, map, value, source, baseLayer) {
+
+   let count = 0;
+
+   e.preventDefault();
+
+   const {moduleNumber, recommendation} = findOutActiveModule()
 
    if (selectedFeatureSearch && section) {
       section.setStyle(function (feature) {
