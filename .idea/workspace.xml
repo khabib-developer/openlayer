@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/chart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chart/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/weather/weather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/weather/weather.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
@@ -50,7 +51,7 @@
       <workItem from="1698336598117" duration="25414000" />
       <workItem from="1698420217783" duration="3126000" />
       <workItem from="1698474255138" duration="23533000" />
-      <workItem from="1698558842654" duration="10065000" />
+      <workItem from="1698558842654" duration="11087000" />
     </task>
     <servers />
   </component>

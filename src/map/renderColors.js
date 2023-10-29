@@ -9,7 +9,7 @@ class RenderColors {
    sections = []
 
    async setData(sections) {
-      const result = await service("/api/modul/counter/")
+      const result = await service("/api/modul/counter-db/")
       if(result) this.data = result
       await delay(500)
       this.sections = sections.getProperties().source.getFeatures()
