@@ -21,7 +21,6 @@ export const defaultMassiveStyle = (text) =>
     });
 
 export const selectedMassiveStyle = (text, strokeColor) => {
-   console.log(text, strokeColor)
    return new Style({
       fill: new Fill({
          color: [85, 118, 255, 0.01],
