@@ -63,6 +63,30 @@ header h1 {
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,255,59,1) 50%, rgba(255,111,0,1) 100%);
 }
 
+.sidebar {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.sidebar:-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+}
+.sidebar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.4);
+}
+.sidebar::-webkit-scrollbar-thumb:active {
+  background: rgba(0,0,0,0.9);
+}
+
 @media only screen and (max-width: 1500px) {
   #map {
     height: calc(100vh - 20px);

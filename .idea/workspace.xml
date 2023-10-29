@@ -2,61 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/Konturlar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Massivlar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/massive.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/animation.hook.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/download.hook.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/massives/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/sections/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mobile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/renderModules.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/tab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/loader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/modules.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Barlos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Baxor.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Beruniy.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Chifokor.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Chinobod.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Dehqonobod.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Guliston.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Konturs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Kulbekov.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/MUlugbek.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mirzacho'l.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Mustaqillik5yil.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Navruz.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Oqoltin.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/OqoltinShaxarchasi.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Oxunboboev.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Sirdaryo baliqchilik.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/T.Axmedov.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Toshkent.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Urmon.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Urmon2uch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Yangiobod.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Yangiyer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/Yunusov.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/map.geojson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/mirzoobod.geojson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/polygon.geojson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/result_geo.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/chart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/chart/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vectorLayers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/weather/weather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/weather/weather.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +50,7 @@
       <workItem from="1698336598117" duration="25414000" />
       <workItem from="1698420217783" duration="3126000" />
       <workItem from="1698474255138" duration="23533000" />
-      <workItem from="1698558842654" duration="8506000" />
+      <workItem from="1698558842654" duration="10065000" />
     </task>
     <servers />
   </component>

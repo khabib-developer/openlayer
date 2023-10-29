@@ -17,15 +17,15 @@ export async function weather() {
   function dailyWeatherComponent(item, day) {
     return `
          <div class="flex items-center hover:bg-slate-100 cursor-pointer rounded-md w-full justify-between px-3">
-          <span class="2xl:text-base flex-1 text-sm text-start">${day
+          <span class="w-1/3 text-sm text-start">${day
             .toString()
             .slice(0, 10)}</span>
-          <div class="flex flex-1 items-center text-base">
+          <div class="flex w-2/3 items-center justify-end text-xs">
             <div class="flex items-center gap-0 gap-2">
-                 <img width="" alt="" class="w-1/4 2xl:w-auto" src="https://openweathermap.org/img/w/${
+                 <img width="" alt="" class="w-1/4 " src="https://openweathermap.org/img/w/${
                    item.weather[0].icon
                  }.png" />
-                  <span class="text-base text-sm">
+                  <span class="text-base text-xs">
                     ${Math.ceil(item.temp.max)} / ${Math.ceil(item.temp.min)}°C
                   </span>     
             </div>

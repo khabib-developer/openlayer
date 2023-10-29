@@ -77,7 +77,7 @@ function giveRecommendations(modules, item) {
 
       return (
           `<div class="flex gap-3">
-              <div class="capitalize text-base text-sm">${module}: <span class="pl-2"> ${suggestion} </span></div>
+              <div class="capitalize text-xs">${module}: <span class="pl-2"> ${suggestion} </span></div>
               <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md border-2 border-black recommendation">
                   <div class="absolute transition-all w-[5px] h-full bg-black" style="left:${20*level - 5}%"></div>
               </div>

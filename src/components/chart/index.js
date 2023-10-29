@@ -1,7 +1,5 @@
 import ApexCharts from 'apexcharts'
 
-const md = window.innerWidth<1500
-
 const extralarge = window.innerWidth > 2300
 
 const options = (labels,data, height) => ({
@@ -12,7 +10,7 @@ const options = (labels,data, height) => ({
 
    chart: {
       type: 'area',
-      height: md?220:350,
+      height: extralarge?350:200,
       zoom: {
          enabled: false
       },
