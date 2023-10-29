@@ -36,7 +36,7 @@ class RenderColors {
       })
    }
 
-   changeFeaturesColorsWithRecommendedColors(index) {
+   changeFeaturesColorsWithRecommendedColors(index, recommendation) {
       this.sections.forEach((feature, i) => {
          const item = this.data.find(item => +item.counter_id === +feature.getProperties()["Kontur_raq"])
          const level = item[featureFieldNames[index]]
@@ -45,7 +45,7 @@ class RenderColors {
                 this.style(
                     String( feature.getProperties()["Kontur_raq"] ),
                     recommendedColorInformation[index][level - 1],
-                    chooseTextColor(level)
+                    chooseTextColor(level, recommendation)
                 )
             )
          }

@@ -51,6 +51,8 @@ const standOutColors = [
    "rgb(255,0,0)",
 ]
 
+const recommendationStandoutColor = '#FFFB01'
+
 let selectedFeatureSearch = null
 let section = null
 
@@ -81,7 +83,7 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
          return defaultStyle(
              recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
              String(feature.getProperties()['Kontur_raq']),
-             chooseTextColor(value)
+             chooseTextColor(value, recommendation)
          );
       });
       selectedFeatureSearch.setStyle(function (feature) {
@@ -122,15 +124,15 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
          section.setStyle(
              selectedStyle(
                  recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
-                 standOutColors[moduleNumber],
+                 !recommendation?standOutColors[moduleNumber]:recommendationStandoutColor,
                  String(section.getProperties()['Kontur_raq']),
-                 chooseTextColor(level)
+                 chooseTextColor(level, recommendation)
              )
          );
          selectedFeatureSearch.setStyle(
              selectedMassiveStyle(
                  selectedFeatureSearch.getProperties()["name"],
-                 standOutColors[moduleNumber]
+                 !recommendation?standOutColors[moduleNumber]:recommendationStandoutColor
              ),
          )
       }

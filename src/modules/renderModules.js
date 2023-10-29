@@ -147,16 +147,19 @@ function handleClickModules() {
       element.addEventListener("change", event => {
          const value = event.target.value;
          if(isNaN(Number(value))) {
-            renderColors.changeFeaturesColorsWithRecommendedColors(recommendationsButtons.findIndex(item => item === value))
+            const index = recommendationsButtons.findIndex(item => item === value)
+            changeColor(index+1, recommendedColorInformation)
+            renderColors.changeFeaturesColorsWithRecommendedColors(index, true)
             return
          }
-         changeColor(value)
+         changeColor(value, colorInformation)
          renderColors.changeFeaturesColors(value)
       })
    })
-   function changeColor(value) {
-      colorInformation[value-1].forEach(function(color, index) {
-         document.querySelector(`.color-information .level_${index+1}`).style.backgroundColor = color
+   function changeColor(value, obj) {
+      obj[value-1].forEach(function(color, index) {
+         const el = document.querySelector(`.color-information .level_${index+1}`)
+         if(el) el.style.backgroundColor = color
       })
    }
 }
