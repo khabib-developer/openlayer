@@ -54,16 +54,19 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
     },
   });
 
-  const clipLayer = new VectorLayer({
-    style: null,
-    source: new VectorSource({
-      url: "../../data/tuman_chegarasi.json",
-      format: new GeoJSON(),
-    }),
-  });
+  // const clipLayer = new VectorLayer({
+  //   style: null,
+  //   source: new VectorSource({
+  //     url: "../../data/tuman_chegarasi.json",
+  //     format: new GeoJSON(),
+  //   }),
+  // });
 
   const baseLayerGroup = new LayerGroup({
-    layers: [ vectorLayer, clipLayer, ],
+    layers: [
+        vectorLayer,
+        //clipLayer
+    ],
   });
 
   map.addLayer(baseLayerGroup);
