@@ -68,23 +68,17 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
 
   map.addLayer(baseLayerGroup);
 
-  const { massives } = drawMassives(map);
+  if(!sectionsShouldBeDrew) {
+    const { massives } = drawMassives(map);
+    globalMassives = massivesgit
+  }
 
-  globalMassives = massives
-
-  const obj = {}
 
   if(sectionsShouldBeDrew) {
     const { sections} = drawSections(map);
+    const { massives } = drawMassives(map);
+    globalMassives = massives
     sectionsData = await renderColors.setData(sections)
-
-    sectionsData.forEach(el => {
-      if(obj[el.counter_id]) {
-        console.log(obj[el.counter_id], el.counter_id)
-      } else {
-        obj[el.counter_id] = el.id
-      }
-    })
 
     const defaultItem = sectionsData.find(item => +item.counter_id === 1)
 
