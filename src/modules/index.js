@@ -10,9 +10,6 @@ export async function activateModules() {
 
    activateTabs()
 
-   if(modules.length !== 10)
-      throw new Error("Modules must be at least 10")
-
    selectPeriod()
 
    return modules

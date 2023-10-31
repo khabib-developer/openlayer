@@ -23,7 +23,7 @@ const options = (labels,data, height) => ({
    },
    colors: ['#4267B2'],
    title: {
-      text: "Today's Hourly Temperature",
+      text: "Bugun soatlik harorat",
       align: 'left'
    },
    labels,

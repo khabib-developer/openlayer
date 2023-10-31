@@ -1,4 +1,6 @@
 import renderColors from "../map/renderColors";
+import {clearInput} from "../hooks/search.hook";
+import {globalMap} from "../map";
 
 export const colorInformation = [
     [
@@ -77,13 +79,91 @@ export const recommendedColorInformation = [
    ],
 ]
 
-export const recommendationsButtons = ["Mahalliy o'g'itlar", "Fosforli o'g'itlar", "Kaliyli o'g'itlar", "Sho'r yuvish", "Sug'orish"]
+export const levelTextInformation = [
+    [
+        "Juda Kam",
+        "Kam",
+        "O'rtacha",
+        "Ko'p",
+        "Juda Ko'p",
+    ],
+   [
+      "Juda Kam",
+      "Kam",
+      "O'rtacha",
+      "Ko'p",
+      "Juda Ko'p",
+   ],
+   [
+      "Juda Kam",
+      "Kam",
+      "O'rtacha",
+      "Ko'p",
+      "Juda Ko'p",
+   ],
+   [
+      "Sho'rlanmagan",
+      "Kuchsiz sho'rlangan",
+      "O'rtacha sho'rlangan",
+      "Kuchli sho'rlangan",
+      "Juda kuchli sho'rlangan",
+   ],
+   [
+      "Juda Kam",
+      "Kam",
+      "O'rtacha",
+      "Ko'p",
+      "Juda Ko'p",
+   ]
+]
 
-export let featuresNames = null;
+export const levelTextRecommendation = [
+   [
+      "30 Tonna/ga",
+      "25 Tonna/ga",
+      "20 Tonna/ga",
+      "10 Tonna/ga",
+      "5 Tonna/ga",
+   ],
+   [
+      "G'o'za: 7,4 kg/ga - Bug'doy: 4.6 kg/ga",
+      "G'o'za: 5,7 kg/ga - Bug'doy: 3.6 kg/ga",
+      "G'o'za: 4,1 kg/ga - Bug'doy: 2.6 kg/ga",
+      "G'o'za: 2,5 kg/ga - Bug'doy: 1.5 kg/ga",
+      "G'o'za: 0,0 kg/ga - Bug'doy: 0.0 kg/ga",
+   ],
+   [
+      "G'o'za: 2,11 kg/ga - Bug'doy: 1.08 kg/ga",
+      "G'o'za: 1,67 kg/ga - Bug'doy: 0.79 kg/ga",
+      "G'o'za: 1,25 kg/ga - Bug'doy: 0.52 kg/ga",
+      "G'o'za: 0,83 kg/ga - Bug'doy: 0.39 kg/ga",
+      "G'o'za: 0,42 kg/ga - Bug'doy: 0.26 kg/ga",
+   ],
+   [
+      "",
+      "",
+      "",
+      "",
+      "",
+   ],
+   [
+      "",
+      "",
+      "",
+      "",
+      "",
+   ]
+]
 
-export let activeFeaturesNames = null
+export let features = null;
+
+export let activeFeaturesNames = null;
+
+export let activeRecommendationModules = null;
 
 export const featureFieldNames = ["gumus", "fosfor", "kaliy", "shorlanish", "namlik"]
+
+let globalModules = null;
 
 export function renderModules(modules) {
    const featuresWrapper = document.querySelector(".features")
@@ -94,6 +174,7 @@ export function renderModules(modules) {
    const weather = document.querySelector(".weather")
    const suggestions = document.querySelector(".suggestion")
 
+   globalModules = modules
    !modules[5].status&&monitor.classList.add("hidden")
 
    !modules[6].status&&weather.classList.add("hidden")
@@ -105,9 +186,11 @@ export function renderModules(modules) {
       suggestions.classList.add("hidden")
    }
 
-   activeFeaturesNames = modules.filter((module, i) => module.status && i < 5)
+   activeFeaturesNames = modules.filter((module, i) => module.status && module.is_feature)
 
-   featuresNames = activeFeaturesNames.map(module => module.name)
+   activeRecommendationModules = modules.filter((module, i) => module.status && module.is_recommendation)
+
+   features = activeFeaturesNames.map(module => module.name)
 
    renderFeatures(
        activeFeaturesNames,
@@ -119,25 +202,20 @@ export function renderModules(modules) {
 
 function renderFeatures(modulesArray, wrapper, wrapper2, modules) {
 
-   wrapper.innerHTML = modulesArray.map(function(module, index) {
-      return (`
-         <div class="radiobtn text-sm">
-            <input type="radio" ${+module.id===modulesArray[0].id&&'checked'} id="${module.name}" name="module" value="${module.id}" />
-            <label class="" for="${module.name}">${module.name}</label>
-         </div>
-      `)
-   }).join("")
+   wrapper.innerHTML = renderItem(modulesArray, 4, 5, true)
 
-   wrapper2.innerHTML = recommendationsButtons.map(function(text, index) {
+   wrapper2.innerHTML = renderItem(activeRecommendationModules, 14, 15)
 
-      if(modules[index].status)
+   function renderItem(array, id1, id2, feature = false) {
+      return array.map(function(module, index) {
          return (`
-            <div class="radiobtn text-sm">
-               <input type="radio" id="${text}" name="module" value="${text}" />
-               <label class="" for="${text}">${text}</label>
+            <div class="radiobtn text-sm ${(module.id === id1 || module.id === id2) ? 'mx-2':'mx-8'}">
+               <input type="radio" ${+module.id===modulesArray[0].id&&feature&&'checked'} id="${module.name}" name="module" value="${module.id}" />
+               <label class="" for="${module.name}">${module.name}</label>
             </div>
          `)
-   }).join("")
+      }).join("")
+   }
 
    handleClickModules()
 }
@@ -145,21 +223,38 @@ function renderFeatures(modulesArray, wrapper, wrapper2, modules) {
 function handleClickModules() {
    document.querySelectorAll("input[name='module']").forEach(function(element) {
       element.addEventListener("change", event => {
-         const value = event.target.value;
-         if(isNaN(Number(value))) {
-            const index = recommendationsButtons.findIndex(item => item === value)
-            changeColor(index+1, recommendedColorInformation)
-            renderColors.changeFeaturesColorsWithRecommendedColors(index, true)
-            return
+         let value = event.target.value;
+         if(globalModules) {
+            const recommendationModule = globalModules.find(module => +module.id === +value)
+            if(recommendationModule.is_recommendation) {
+               const index = globalModules.filter(module => module.is_recommendation).findIndex(module => module.id === recommendationModule.id)
+               const featureModule = globalModules.filter(module => module.is_feature)[index]
+               value = featureModule.id
+               renderColors.changeFeaturesColorsWithRecommendedColors(value)
+            } else renderColors.changeFeaturesColors(value)
+            changeColor(value, colorInformation)
+            changeText(value, recommendationModule.is_recommendation?levelTextRecommendation:levelTextInformation, recommendationModule.is_recommendation)
+            if(globalMap) clearInput(globalMap)
          }
-         changeColor(value, colorInformation)
-         renderColors.changeFeaturesColors(value)
       })
    })
    function changeColor(value, obj) {
       obj[value-1].forEach(function(color, index) {
          const el = document.querySelector(`.color-information .level_${index+1}`)
          if(el) el.style.backgroundColor = color
+      })
+   }
+   function changeText(value, obj, recommendation) {
+      obj[value - 1].forEach(function(text, index) {
+         const el = document.querySelectorAll(`.text_level_${index+1} span`)
+         if(recommendation) {
+            el[0].innerText = levelTextInformation[0][index]
+            el[1].innerText = text
+         } else {
+            el[0].innerText = text
+            el[1].innerText = ''
+         }
+         el.innerHTML = text
       })
    }
 }

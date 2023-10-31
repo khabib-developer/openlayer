@@ -22,8 +22,7 @@ class RenderColors {
 
    async changeData(value, param = "", recommendation) {
       const result = await service(`/api/modul/counter-db/${param}`)
-
-      if(result) {
+      if(result && result.length > 0) {
          this.data = result
          recommendation?this.changeFeaturesColorsWithRecommendedColors(value):this.changeFeaturesColors(value + 1)
          return this.data
@@ -46,7 +45,7 @@ class RenderColors {
       })
    }
 
-   changeFeaturesColorsWithRecommendedColors(index, recommendation) {
+   changeFeaturesColorsWithRecommendedColors(index) {
       this.sections.forEach((feature, i) => {
          const item = this.data.find(item => +item.counter_id === +feature.getProperties()["Kontur_raq"])
          const level = item[featureFieldNames[index]]
@@ -55,7 +54,7 @@ class RenderColors {
                 this.style(
                     String( feature.getProperties()["Kontur_raq"] ),
                     recommendedColorInformation[index][level - 1],
-                    chooseTextColor(level, recommendation)
+                    chooseTextColor(level, true)
                 )
             )
          }
@@ -68,7 +67,7 @@ class RenderColors {
             color: color,
          }),
          stroke: new Stroke({
-            color: color,
+            color: "rgb(0,0,0,0.5)",
             width: 1,
          }),
          text: new Text({

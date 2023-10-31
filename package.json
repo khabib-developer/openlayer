@@ -13,6 +13,7 @@
   "dependencies": {
     "apexcharts": "^3.43.0",
     "axios": "^1.5.1",
+    "html2canvas": "^1.4.1",
     "ol": "latest",
     "tw-elements": "^1.0.0"
   }

@@ -1,15 +1,13 @@
 import {Fill, Stroke, Style, Text} from "ol/style";
 import {renderInformation} from "../modules/information";
-import {globalMassives, sectionsData} from "../map";
+import {globalMassives, mapExtent, mapZoom, sectionsData} from "../map";
 import {
    colorInformation,
    featureFieldNames,
-   featuresNames,
    recommendedColorInformation
 } from "../modules/renderModules";
 import {chooseTextColor} from "../utils";
 import {defaultMassiveStyle, selectedMassiveStyle} from "../map/massives";
-
 
 const selectedStyle = (fill, stroke, text, textColor) => new Style({
    fill: new Fill({
@@ -32,7 +30,7 @@ const defaultStyle = (fill, text, textColor) => new Style({
       color: fill,
    }),
    stroke: new Stroke({
-      color: [46, 45, 45, 0.01],
+      color: [0, 0, 0, 0.5],
       width: 1,
    }),
    text: new Text({
@@ -71,29 +69,20 @@ export function findOutActiveModule() {
    return {recommendation, moduleNumber}
 }
 
-export function searchSection(e, sections, massives, map, value, source, baseLayer) {
+export function searchSection(e, sections, massives, map, value) {
 
    let count = 0;
 
    e.preventDefault();
 
+   if(isNaN(Number(value))) {
+      searchMassiveByName(massives, map, value)
+      return
+   }
+
    const {moduleNumber, recommendation} = findOutActiveModule()
 
-   if (selectedFeatureSearch && section) {
-      section.setStyle(function (feature) {
-         const item = sectionsData.find(item => +item.counter_id === +feature.getProperties()['Kontur_raq'])
-
-         const level = item[featureFieldNames[moduleNumber]]
-         return defaultStyle(
-             recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
-             String(feature.getProperties()['Kontur_raq']),
-             chooseTextColor(value, recommendation)
-         );
-      });
-      selectedFeatureSearch.setStyle(function (feature) {
-         return defaultMassiveStyle(feature.getProperties()["name"])
-      })
-   }
+   setDefaultStyle()
 
    sections.getSource().forEachFeature(feature => {
       if (+feature.getProperties()['Kontur_raq'] === +value) {
@@ -113,16 +102,16 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
       }
    })
 
-
    if (sectionsData && globalMassives.getProperties().source.getFeatures().length) {
       const item = sectionsData.find(item => +item.counter_id === +value)
-      renderInformation(featuresNames, item, selectedFeatureSearch.getProperties()['name'])
+      renderInformation(item, selectedFeatureSearch.getProperties()['name'])
 
       const view = map.getView();
 
       if (selectedFeatureSearch) {
-         view.fit(selectedFeatureSearch.getGeometry().getExtent(), {
+         view.fit(section.getGeometry().getExtent(), {
             duration: 500,
+            maxZoom: 15
          })
          const level = item[featureFieldNames[moduleNumber]]
          section.setStyle(
@@ -142,5 +131,64 @@ export function searchSection(e, sections, massives, map, value, source, baseLay
       }
    }
 
+}
 
+export function searchMassiveByName(massiveItems, map, value) {
+   let count = 0
+
+   const {recommendation, moduleNumber} = findOutActiveModule()
+
+   setDefaultStyle()
+
+   const view = map.getView();
+
+   massiveItems.getSource().forEachFeature(feature => {
+      if(feature.getProperties()['name'].toLowerCase() === value.toLowerCase()) {
+         selectedFeatureSearch = feature
+         view.fit(feature.getGeometry().getExtent(), {
+            duration: 500,
+            maxZoom: 15
+         })
+         feature.setStyle(
+             selectedMassiveStyle(
+                 feature.getProperties()["name"],
+                 !recommendation?standOutColors[moduleNumber]:recommendationStandoutColor
+             ),
+         )
+      } else count++
+   })
+
+   if(count === massiveItems.getSource().getFeatures().length) {
+      alert("Qidirilgan massiv afsuski topilmadi")
+   }
+}
+
+export function setDefaultStyle() {
+   const {moduleNumber, recommendation} = findOutActiveModule()
+
+   if(selectedFeatureSearch) selectedFeatureSearch.setStyle(function (feature) {
+      return defaultMassiveStyle(feature.getProperties()["name"])
+   })
+   if(section) {
+      section.setStyle(function (feature) {
+         const item = sectionsData.find(item => +item.counter_id === +feature.getProperties()['Kontur_raq'])
+         const level = item[featureFieldNames[moduleNumber]]
+         return defaultStyle(
+             recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
+             String(feature.getProperties()['Kontur_raq']),
+             chooseTextColor(moduleNumber, recommendation)
+         );
+      });
+   }
+}
+
+export function clearInput(map, input = null) {
+
+   setDefaultStyle()
+
+   if(input) input.value = ""
+
+   const view = map.getView();
+
+   view.fit(mapExtent, {duration: 500, maxZoom: mapZoom + 4})
 }

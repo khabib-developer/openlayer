@@ -1,13 +1,71 @@
 import renderColors from "../map/renderColors";
-import {findOutActiveModule} from "../hooks/search.hook";
+import {clearInput, findOutActiveModule} from "../hooks/search.hook";
+import {globalMap} from "../map";
 
+export let months =["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"]
+
+export const seasons = ["Qish", "Bahor", "Yoz", "Kuz"]
+
+const date = new Date()
 
 export function selectPeriod() {
+
+   renderInputs()
+
    const inputs = document.querySelectorAll("input[name='monitor']")
    inputs.forEach(input => {
-      input.addEventListener("click",async  event => {
+      input.addEventListener("click", async  event => {
          const {moduleNumber, recommendation} = findOutActiveModule()
-         await renderColors.changeData(moduleNumber, `?monitor=${event.target.value}`, recommendation)
+         const name = event.target.getAttribute("id").split("_")[0]
+         if(globalMap) clearInput(globalMap)
+         await renderColors.changeData(moduleNumber, `?${name}=${event.target.value}`, recommendation)
       })
    })
 }
+
+export function renderInputs() {
+   const monthWrapper = document.querySelector(".monthWrapper")
+   const seasonWrapper = document.querySelector(".seasonWrapper")
+   const yearWrapper = document.querySelector(".yearWrapper")
+
+   monthWrapper.innerHTML = renderMonths()
+   seasonWrapper.innerHTML = renderSeasons()
+   yearWrapper.innerHTML = renderYears()
+}
+
+function renderMonths() {
+   let modifiedMonths = months.map((month, i) => ({id: i + 1, name: month}))
+   const currentMonth = date.getMonth()
+   modifiedMonths = [...modifiedMonths.slice(currentMonth), ...modifiedMonths.slice(0, currentMonth) ]
+   return modifiedMonths.map((month, i) => renderInput(`month_${i}`, month.name, month.id)).join("")
+}
+
+function renderSeasons() {
+   let indexes = [1,3,6,9]
+   const currentMonth = date.getMonth()
+   const index = Math.floor(currentMonth / 3) % 4
+   let modifiedSeasons = seasons.map((season, i) => ({id: i, name: season}))
+   indexes = [...indexes.slice(0, index), ...indexes.slice(index)]
+   modifiedSeasons = [...modifiedSeasons.slice(0, index), ...modifiedSeasons.slice(index)]
+   return modifiedSeasons.map((season, i) => renderInput(`quarter_${i}`, season.name, indexes[i])).join("")
+}
+
+function renderYears() {
+   const currentYear = new Date().getFullYear()
+   const years = []
+   for (let i = 2023; i <= currentYear; i++) {
+      years.push(i)
+   }
+   return years.map((season, i) => renderInput(`years_${i}`, season, +season)).join("")
+}
+
+
+function renderInput(id, name, value) {
+   return  `
+      <div class="radiobtn text-sm">
+           <input type="radio" id="${id}" name="monitor" value="${value}"/>
+           <label for="${id}">${name}</label>
+       </div>
+   `
+}
+

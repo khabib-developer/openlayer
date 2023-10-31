@@ -33,15 +33,20 @@
     <header>
     </header>
     <div class="wrapper justify-center relative">
-        <div class="sidebar">
+        <div class="sidebar pb-4">
             <div class="wrap mx-5 hidden lg:block">
                 <form class="search text-sm">
-                    <input type="text" class="searchTerm" placeholder="Kontur raqami">
+                    <div class="w-full">
+                        <input type="text" class="searchTerm relative" placeholder="Kontur raqami yoki massiv nomi">
+                        <span class="absolute pointer clearButton top-[9px] right-[45px]"><i
+                                class="fas fa-times"></i></span>
+                    </div>
                     <button type="submit" class="searchButton">
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
             </div>
+
             <ul class="2xl:mt-5 text-sm  2xl:text-lg mt-10 mx-5 flex mt-0  list-none flex-row flex-wrap border-b-0 pl-0 "
                 role="tablist"
                 data-te-nav-ref>
@@ -72,17 +77,25 @@
                 </li>
             </ul>
             <!--Tabs content-->
-            <div class="hidden features opacity-100 mx-5 mt-5 2xl:mt-8 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            <div class="hidden border-2 border-t-0 pb-2 border-[#4267B2] opacity-100 mx-5 pt-2 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
                  id="state"
                  role="tabpanel"
                  aria-labelledby="tabs-home-tab"
                  data-te-tab-active>
+                <h4 class="text-start pb-2 px-2 lg:text-base text-sm">Ta'minlanganlik holati:</h4>
+                <div class="features gap-1 flex flex-col">
 
+                </div>
             </div>
-            <div class="hidden recommendationWrapper mx-5 mt-5 2xl:mt-8 opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            <div class="hidden border-2 border-t-0 pb-2 border-[#4267B2] mx-5 pt-2 opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
                  id="recommendation"
                  role="tabpanel"
                  aria-labelledby="tabs-profile-tab">
+                <h4 class="text-start pb-2 px-2 lg:text-base text-sm">O'g'it qo'llash:</h4>
+                <div class="recommendationWrapper gap-1 flex flex-col">
+
+                </div>
+
             </div>
 
             <span class="firstSideBarCloseBtn lg:hidden block absolute top-[10px] right-[10px]">
@@ -90,46 +103,158 @@
             </span>
 
             <h2 class="text-start 2xl:mt-8 mt-5 2xl:text-lg text-sm mx-5">Monitoring</h2>
-            <div class="mx-5 2xl:mt-5 mt-5 monitor">
-                <div class="radiobtn text-sm">
-                    <input  type="radio" id="monthly" name="monitor" value="1"/>
-                    <label for="monthly">Oylik</label>
-                </div>
 
-                <div class="radiobtn text-sm">
-                    <input type="radio" id="quarter" name="monitor" value="3"/>
-                    <label for="quarter">Chorak</label>
-                </div>
+            <div id="accordionFlushExample " class="mx-5 mt-5">
+                <div class="rounded-none border text-sm border-l-0 border-r-0 border-t-0 border-neutral-200 bg-transparent">
+                    <h2 class="mb-0" id="flush-headingOne">
+                        <button
+                                class="group bg-[#4267B2] relative flex w-full items-center rounded-none border-0 px-5 py-4 text-left text-sm text-white rounded transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-[#4267B2] [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] "
+                                type="button"
+                                data-te-collapse-init
+                                data-te-collapse-collapsed
+                                data-te-target="#flush-collapseOne"
+                                aria-expanded="true"
+                                aria-controls="flush-collapseOne">
+                            Oylik
+                            <span class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                              <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="1.5"
+                                      stroke="currentColor"
+                                      class="h-6 w-6">
+                                <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                              </svg>
+                            </span>
+                        </button>
+                    </h2>
+                    <div
+                        id="flush-collapseOne"
+                        class="!visible hidden border-0"
+                        data-te-collapse-item
+                        aria-labelledby="flush-headingOne"
+                        data-te-parent="#accordionFlushExample">
+                        <div class="px-5 py-4 monthWrapper">
 
-                <div class="radiobtn text-sm">
-                    <input type="radio" id="year" name="monitor" value="12"/>
-                    <label for="year">Yillik</label>
+                        </div>
+                    </div>
                 </div>
+                <div class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-transparent ">
+                    <h2 class="mb-0" id="flush-headingTwo">
+                        <button
+                                class="group bg-[#4267B2] relative flex w-full items-center rounded-none border-0 px-5 py-4 text-left text-sm text-white rounded transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-[#4267B2] [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] "
+                                type="button"
+                                data-te-collapse-init
+                                data-te-collapse-collapsed
+                                data-te-target="#flush-collapseTwo"
+                                aria-expanded="true"
+                                aria-controls="flush-collapseTwo">
+                            Chorak
+                            <span class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                              <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="1.5"
+                                      stroke="currentColor"
+                                      class="h-6 w-6">
+                                <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                              </svg>
+                            </span>
+                        </button>
+                    </h2>
+                    <div
+                            id="flush-collapseTwo"
+                            class="!visible hidden border-0"
+                            data-te-collapse-item
+                            aria-labelledby="flush-headingTwo"
+                            data-te-parent="#accordionFlushExample">
+                        <div class="px-5 py-4 seasonWrapper">
 
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-transparent ">
+                    <h2 class="mb-0" id="flush-headingThree">
+                        <button
+                                class="group bg-[#4267B2] relative flex w-full items-center rounded-none border-0 px-5 py-4 text-left text-sm text-white rounded transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-[#4267B2] [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] "
+                                type="button"
+                                data-te-collapse-init
+                                data-te-collapse-collapsed
+                                data-te-target="#flush-collapseThree"
+                                aria-expanded="true"
+                                aria-controls="flush-collapseThree">
+                            Yillik
+                            <span class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                              <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="1.5"
+                                      stroke="currentColor"
+                                      class="h-6 w-6">
+                                <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                              </svg>
+                            </span>
+                        </button>
+                    </h2>
+                    <div
+                            id="flush-collapseThree"
+                            class="!visible hidden"
+                            data-te-collapse-item
+                            aria-labelledby="flush-headingThree"
+                            data-te-parent="#accordionFlushExample">
+                        <div class="px-5 py-4 yearWrapper">
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2 class="text-start 2xl:mt-10 mt-5 2xl:text-lg text-sm mx-5">Ranglar haqida ma'lumot</h2>
+
+            <h2 class="text-start 2xl:mt-10 mt-5 2xl:text-lg text-sm mx-5">Shartli belgilar</h2>
+
             <div class="mx-5 2xl:mt-5 flex flex-col 2xl:gap-1 gap-0 color-information">
                 <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
                     <div class="border-2 level_1 border-gray-900  h-[15px] w-[25px]"></div>
-                    <span>Juda Kam</span>
+                    <div class="text_level_1 flex justify-between w-full"> <span> Juda Kam </span><span></span></div>
                 </div>
                 <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
                     <div class="border-2 level_2 border-gray-900  h-[15px] w-[25px]"></div>
-                    <span>Kam</span>
+                    <div class="text_level_2 flex justify-between w-full"> <span> Kam </span><span></span></div>
                 </div>
                 <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
                     <div class="border-2 level_3 border-gray-900  h-[15px] w-[25px]"></div>
-                    <span>O'rtacha</span>
+                    <div class="text_level_3 flex justify-between w-full"> <span> O'rtacha </span><span></span></div>
                 </div>
                 <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
                     <div class="border-2 level_4 border-gray-900  h-[15px] w-[25px]"></div>
-                    <span>Ko'p</span>
+                    <div class="text_level_4 flex justify-between w-full"> <span> Ko'p </span><span></span></div>
                 </div>
                 <div class=" text-start flex text-sm  py-2 items-center gap-2 ">
                     <div class="border-2 level_5 border-gray-900  h-[15px] w-[25px]"></div>
-                    <span>Juda Ko'p</span>
+                    <div class="text_level_5 flex justify-between w-full"> <span> Juda Ko'p </span><span></span></div>
                 </div>
             </div>
+
+            <a id="image-download" download="map.png"></a>
+            <div class="px-5 pt-4">
+                <button id="download"
+                        class="btn btn-outline-dark text-sm border-2 rounded-md w-full 2xl:py-2 py-1 border-gray-500"
+                        role="button">
+                    <i class="fa fa-download"></i> <span class="px-3">Karta rasmini yuklab olish</span>
+                </button>
+            </div>
+
         </div>
         <div id="map">
             <div class="wrap z-[1] mobileSearch lg:hidden absolute">
@@ -138,6 +263,8 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <input type="text" class="searchTerm" placeholder="Kontur raqami">
+                    <span class="absolute pointer clearButton top-[9px] right-[45px]"><i
+                            class="fas fa-times"></i></span>
                     <button type="submit" class="searchButton">
                         <i class="fa fa-search"></i>
                     </button>
@@ -146,78 +273,71 @@
         </div>
         <div class="sidebar ">
             <div class="sub-sidebar pb-4 pt-1 lg:pt-0">
-            <div>
-                <a id="image-download" download="map.png"></a>
-                <div class="px-5">
-                    <button id="download"
-                            class="btn btn-outline-dark text-sm border-2 rounded-md w-full 2xl:py-2 py-1 border-gray-500"
-                            role="button">
-                        <i class="fa fa-download"></i> <span class="px-3">Karta rasmini yuklab olish</span>
-                    </button>
+                <div>
+                    <div class="weather ">
+                        <h2 class="text-start 2xl:text-lg text-sm px-5">Ob havo</h2>
+                        <div class="flex flex-col 2xl:py-3 2xl:px-5 py-1 px-2 text-slate-900 weather__wrapper"></div>
+                    </div>
+
                 </div>
 
-
-                <div class="weather 2xl:mt-10 mt-3">
-                    <h2 class="text-start 2xl:text-lg text-sm px-5">Ob havo</h2>
-                    <div class="flex flex-col 2xl:py-3 2xl:px-5 py-1 px-2 text-slate-900 weather__wrapper"></div>
+                <div class="px-5 py-3 py-0 px-2">
+                    <div id="chart"></div>
                 </div>
+                <div class="h-[2px] w-full mt-2 bg-[#4267B2] px-5"></div>
+                <div class="suggestion px-5 mt-3 px-2">
+                    <h4 class="text-start 2xl:text-lg text-sm font-bold pb-2">Kontur bo'yicha ma'lumotlar</h4>
+                    <h5 class="text-start 2xl:text-base text-sm">Massiv: <span class="selectedMassivName">1</span></h5>
+                    <h5 class="text-start 2xl:text-base text-sm">Kontur raqami: <span
+                            class="selectedSectionNumber">1</span></h5>
+                    <div class="border-2 rounded border-[#4267B2] 2xl:mt-2 mt-1">
+                        <ul class="mb-2 flex mt-0 list-none flex-row flex-wrap border-b-0 pl-0 "
+                            role="tablist"
+                            data-te-nav-ref>
+                            <li role="presentation" class="flex-1">
+                                <a
+                                        href="#tabs-home"
+                                        class=" block border-x-0 tab-nav border-b-2 border-b-[#4267B2] border-t-0 bg-[#4267B2] pb-3.5 pt-4 py-2 text-xs font-medium uppercase leading-tight text-white hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
+                                        data-te-toggle="pill"
+                                        data-te-target="#tabs-home"
+                                        data-te-nav-active
+                                        role="tab"
+                                        aria-controls="tabs-home"
+                                        aria-selected="true"
+                                >Holat</a
+                                >
+                            </li>
+                            <li role="presentation" class="flex-1">
+                                <a
+                                        href="#tabs-profile"
+                                        class="block border-x-0 tab-nav border-b-2 border-b-[#4267B2] border-t-0 border-transparent pb-3.5 pt-4 py-2 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
+                                        data-te-toggle="pill"
+                                        data-te-target="#tabs-profile"
+                                        role="tab"
+                                        aria-controls="tabs-profile"
+                                        aria-selected="false"
+                                >Tavsiya</a
+                                >
+                            </li>
+                        </ul>
+                        <!--Tabs content-->
+                        <div class="mb-1">
+                            <div class="hidden information-wrapper opacity-100 2xl:px-5 px-2 text-sm flex flex-col gap-2 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                                 id="tabs-home"
+                                 role="tabpanel"
+                                 aria-labelledby="tabs-home-tab"
+                                 data-te-tab-active></div>
+                            <div class="hidden recommendation-wrapper 2xl:px-5 px-2 text-sm flex flex-col gap-2 opacity-0 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                                 id="tabs-profile"
+                                 role="tabpanel"
+                                 aria-labelledby="tabs-profile-tab">
 
-            </div>
-
-            <div class="px-5 py-3 py-0 px-2">
-                <div id="chart"></div>
-            </div>
-            <div class="suggestion px-5 mt-1 px-2">
-                <h5 class="text-start 2xl:text-lg text-sm ">Massiv: <span class="selectedMassivName">1</span></h5>
-                <h5 class="text-start 2xl:text-lg text-sm">Kontur raqami: <span class="selectedSectionNumber">1</span></h5>
-                <div class="border-2 rounded border-[#4267B2] 2xl:mt-5 mt-1">
-                    <ul class="mb-2 flex mt-0 list-none flex-row flex-wrap border-b-0 pl-0 "
-                        role="tablist"
-                        data-te-nav-ref>
-                        <li role="presentation" class="flex-1">
-                            <a
-                                    href="#tabs-home"
-                                    class=" block border-x-0 tab-nav border-b-2 border-b-[#4267B2] border-t-0 bg-[#4267B2] pb-3.5 pt-4 py-2 text-xs font-medium uppercase leading-tight text-white hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
-                                    data-te-toggle="pill"
-                                    data-te-target="#tabs-home"
-                                    data-te-nav-active
-                                    role="tab"
-                                    aria-controls="tabs-home"
-                                    aria-selected="true"
-                            >Ma'lumot</a
-                            >
-                        </li>
-                        <li role="presentation" class="flex-1">
-                            <a
-                                    href="#tabs-profile"
-                                    class="block border-x-0 tab-nav border-b-2 border-b-[#4267B2] border-t-0 border-transparent pb-3.5 pt-4 py-2 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-[#4267B2] hover:text-white"
-                                    data-te-toggle="pill"
-                                    data-te-target="#tabs-profile"
-                                    role="tab"
-                                    aria-controls="tabs-profile"
-                                    aria-selected="false"
-                            >Tavsiya</a
-                            >
-                        </li>
-                    </ul>
-                    <!--Tabs content-->
-                    <div class="mb-1">
-                        <div class="hidden information-wrapper opacity-100 2xl:px-5 px-2 text-sm flex flex-col gap-2 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-                             id="tabs-home"
-                             role="tabpanel"
-                             aria-labelledby="tabs-home-tab"
-                             data-te-tab-active></div>
-                        <div class="hidden recommendation-wrapper 2xl:px-5 px-2 text-sm flex flex-col gap-2 opacity-0 text-start 2xl:text-[15px] transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-                            id="tabs-profile"
-                            role="tabpanel"
-                            aria-labelledby="tabs-profile-tab">
-
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
-
-
-            </div>
             </div>
             <div class="lg:hidden block absolute p-2 text-black font-light bg-[#d4d4d4] top-[45px] -left-[32px]">
                 <div class="toggleSecondSideBar">

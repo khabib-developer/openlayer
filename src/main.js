@@ -2,18 +2,14 @@ import "../styles/style.css";
 import { drawMap } from "./map";
 import {weather} from "./weather/weather";
 import {activateModules} from "./modules";
-
+import {Tab,initTE,Collapse} from "tw-elements";
+import {activateMobile} from "./mobile";
 
 const download = document.querySelector("#download");
 const loader = document.querySelector(".loader");
 const error = document.querySelector(".error");
-import {
-  Tab,
-  initTE,
-} from "tw-elements";
-import {activateMobile} from "./mobile";
 
-initTE({ Tab });
+initTE({ Tab, Collapse });
 
 function removeLoader() {
   loader.classList.add("opacity-0");
