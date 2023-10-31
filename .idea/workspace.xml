@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/download.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/download.hook.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/renderModules.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/renderModules.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +54,7 @@
       <workItem from="1698558842654" duration="29678000" />
       <workItem from="1698662404223" duration="767000" />
       <workItem from="1698692726010" duration="23630000" />
-      <workItem from="1698751533714" duration="3192000" />
+      <workItem from="1698751533714" duration="3704000" />
     </task>
     <servers />
   </component>

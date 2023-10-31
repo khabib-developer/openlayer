@@ -34,7 +34,7 @@ export const colorInformation = [
    [
       "rgb(255,255,0)",
       "rgb(204,255,153)",
-      "rgb(255,255,255)",
+      "#9aff65",
       "rgb(0,255,0)",
       "rgb(102,153,0)",
    ],
