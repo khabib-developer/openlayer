@@ -1,6 +1,4 @@
 
-import html2canvas from 'html2canvas';
-
 export function downloadHook(map) {
    map.once("rendercomplete", function () {
       const mapCanvas = document.createElement("canvas");
@@ -9,62 +7,50 @@ export function downloadHook(map) {
       mapCanvas.height = size[1];
       const mapContext = mapCanvas.getContext("2d");
 
-      html2canvas(document.querySelector("#map"), {
-         allowTaint: true,
-         foreignObjectRendering: true
-
-      }).then(function(canvas) {
-         document.body.appendChild(canvas);
-
-         const link = document.getElementById("image-download");
-         link.href = canvas.toDataURL();
-         link.click();
-      });
-
-      // Array.prototype.forEach.call(
-      //     map.getViewport().querySelectorAll(".ol-layer canvas, canvas.ol-layer"),
-      //     function (canvas) {
-      //        if (canvas.width > 0) {
-      //           const opacity =
-      //               canvas.parentNode.style.opacity || canvas.style.opacity;
-      //           mapContext.globalAlpha = opacity === "" ? 1 : Number(opacity);
-      //           let matrix;
-      //           const transform = canvas.style.transform;
-      //           if (transform) {
-      //              // Get the transform parameters from the style's transform matrix
-      //              matrix = transform
-      //                  .match(/^matrix\(([^\(]*)\)$/)[1]
-      //                  .split(",")
-      //                  .map(Number);
-      //           } else {
-      //              matrix = [
-      //                 parseFloat(canvas.style.width) / canvas.width,
-      //                 0,
-      //                 0,
-      //                 parseFloat(canvas.style.height) / canvas.height,
-      //                 0,
-      //                 0,
-      //              ];
-      //           }
-      //           // Apply the transform to the export map context
-      //           CanvasRenderingContext2D.prototype.setTransform.apply(
-      //               mapContext,
-      //               matrix
-      //           );
-      //           const backgroundColor = canvas.parentNode.style.backgroundColor;
-      //           if (backgroundColor) {
-      //              mapContext.fillStyle = backgroundColor;
-      //              mapContext.fillRect(0, 0, canvas.width, canvas.height);
-      //           }
-      //           mapContext.drawImage(canvas, 0, 0);
-      //        }
-      //     }
-      // );
-      // mapContext.globalAlpha = 1;
-      // mapContext.setTransform(1, 0, 0, 1, 0, 0);
-      // const link = document.getElementById("image-download");
-      // link.href = mapCanvas.toDataURL();
-      // link.click();
+      Array.prototype.forEach.call(
+          map.getViewport().querySelectorAll(".ol-layer canvas, canvas.ol-layer"),
+          function (canvas) {
+             if (canvas.width > 0) {
+                const opacity =
+                    canvas.parentNode.style.opacity || canvas.style.opacity;
+                mapContext.globalAlpha = opacity === "" ? 1 : Number(opacity);
+                let matrix;
+                const transform = canvas.style.transform;
+                if (transform) {
+                   // Get the transform parameters from the style's transform matrix
+                   matrix = transform
+                       .match(/^matrix\(([^\(]*)\)$/)[1]
+                       .split(",")
+                       .map(Number);
+                } else {
+                   matrix = [
+                      parseFloat(canvas.style.width) / canvas.width,
+                      0,
+                      0,
+                      parseFloat(canvas.style.height) / canvas.height,
+                      0,
+                      0,
+                   ];
+                }
+                // Apply the transform to the export map context
+                CanvasRenderingContext2D.prototype.setTransform.apply(
+                    mapContext,
+                    matrix
+                );
+                const backgroundColor = canvas.parentNode.style.backgroundColor;
+                if (backgroundColor) {
+                   mapContext.fillStyle = backgroundColor;
+                   mapContext.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                mapContext.drawImage(canvas, 0, 0);
+             }
+          }
+      );
+      mapContext.globalAlpha = 1;
+      mapContext.setTransform(1, 0, 0, 1, 0, 0);
+      const link = document.getElementById("image-download");
+      link.href = mapCanvas.toDataURL();
+      link.click();
    });
    map.renderSync();
 }

@@ -14,6 +14,7 @@ import {renderInformation} from "../modules/information";
 import {activeFeaturesNames} from "../modules/renderModules";
 import TileLayer from "ol/layer/Tile";
 import {TileImage} from "ol/source";
+import { XYZ } from 'ol/source'
 
 export const mapExtent = [
    7608167.238671773, 4908957.917046178, 7669859.814263282, 4958395.798040829,
@@ -49,7 +50,11 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
    globalMap = map;
 
    const baseLayer = new TileLayer({
-      source: new TileImage({url: 'http://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}'})
+      name:"basic",
+      source: new XYZ({
+         url: 'http://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}',
+         crossOrigin: 'Anonymous'
+      })
    })
 
    const vectorLayer = new VectorTileLayer({
@@ -79,8 +84,8 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
    const baseLayerGroup = new LayerGroup({
       layers: [
          baseLayer,
-         clipLayer
-         //vectorLayer,
+         clipLayer,
+         // vectorLayer,
       ],
    });
 
