@@ -55,18 +55,7 @@ export function drawMassives(map) {
 
    map.addLayer(massives);
 
-   map.on("click", (evt) => {
-      console.log(evt.coordinate)
-      massives.getFeatures(evt.pixel).then((features) => {
-         if (features.length) {
-            const view = map.getView();
-            setDefaultStyle()
-            view.fit(features[0].getGeometry().getExtent(), {
-               duration: 500,
-            });
-         }
-      });
-   });
+
 
    return {massives};
 }

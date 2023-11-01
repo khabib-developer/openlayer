@@ -13,7 +13,6 @@ import renderColors from "./renderColors";
 import {renderInformation} from "../modules/information";
 import {activeFeaturesNames} from "../modules/renderModules";
 import TileLayer from "ol/layer/Tile";
-import {TileImage} from "ol/source";
 import { XYZ } from 'ol/source'
 
 export const mapExtent = [
@@ -103,7 +102,6 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
       globalMassives = massives
       if (activeFeaturesNames.length) {
          sectionsData = await renderColors.setData(sections, activeFeaturesNames[0].id)
-
          if (sections) {
             const defaultItem = sectionsData[0]
 

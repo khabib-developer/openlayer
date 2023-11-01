@@ -4,17 +4,13 @@ import {weather} from "./weather/weather";
 import {activateModules} from "./modules";
 import {Tab,initTE,Collapse} from "tw-elements";
 import {activateMobile} from "./mobile";
+import {removeLoader} from "./utils";
 
 const download = document.querySelector("#download");
-const loader = document.querySelector(".loader");
 const error = document.querySelector(".error");
 
-initTE({ Tab, Collapse });
 
-function removeLoader() {
-  loader.classList.add("opacity-0");
-  loader.classList.add("-z-10");
-}
+initTE({ Tab, Collapse });
 
 function errorMessage() {
   error.classList.remove("hidden")

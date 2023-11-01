@@ -1,5 +1,5 @@
 import {service} from "../service";
-import {chooseTextColor, delay} from "../utils";
+import {chooseTextColor, delay, removeLoader, showLoader} from "../utils";
 import {Fill, Stroke, Style, Text} from "ol/style";
 import {colorInformation, featureFieldNames, recommendedColorInformation} from "../modules/renderModules";
 
@@ -21,10 +21,12 @@ class RenderColors {
    }
 
    async changeData(value, param = "", recommendation) {
+      showLoader()
       const result = await service(`/api/modul/counter-db/${param}`)
       if(result && result.length > 0) {
          this.data = result
          recommendation?this.changeFeaturesColorsWithRecommendedColors(value):this.changeFeaturesColors(value + 1)
+         removeLoader()
          return this.data
       }
    }

@@ -8,6 +8,7 @@ import {
 } from "../modules/renderModules";
 import {chooseTextColor} from "../utils";
 import {defaultMassiveStyle, selectedMassiveStyle} from "../map/massives";
+import renderColors from "../map/renderColors";
 
 const selectedStyle = (fill, stroke, text, textColor) => new Style({
    fill: new Fill({
@@ -96,14 +97,23 @@ export function searchSection(e, sections, massives, map, value) {
       return
    }
 
-   massives.getSource().forEachFeature(feature => {
+   changeSelectedFeaturesStyle(section, map)
+}
+
+export function changeSelectedFeaturesStyle(selectedSection, map) {
+   const {moduleNumber, recommendation} = findOutActiveModule()
+
+   section = selectedSection
+
+   globalMassives.getSource().forEachFeature(feature => {
       if (section.getProperties()['massiv'] === feature.getProperties()['name']) {
          selectedFeatureSearch = feature
       }
    })
 
-   if (sectionsData && globalMassives.getProperties().source.getFeatures().length) {
-      const item = sectionsData.find(item => +item.counter_id === +value)
+   if (renderColors.data && globalMassives.getProperties().source.getFeatures().length) {
+      const item = renderColors.data.find(item => +item.counter_id === +section.getProperties()['Kontur_raq'])
+
       renderInformation(item, selectedFeatureSearch.getProperties()['name'])
 
       const view = map.getView();
@@ -114,6 +124,7 @@ export function searchSection(e, sections, massives, map, value) {
             maxZoom: 15
          })
          const level = item[featureFieldNames[moduleNumber]]
+
          section.setStyle(
              selectedStyle(
                  recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
@@ -122,6 +133,7 @@ export function searchSection(e, sections, massives, map, value) {
                  chooseTextColor(level, recommendation)
              )
          );
+
          selectedFeatureSearch.setStyle(
              selectedMassiveStyle(
                  selectedFeatureSearch.getProperties()["name"],
@@ -130,7 +142,6 @@ export function searchSection(e, sections, massives, map, value) {
          )
       }
    }
-
 }
 
 export function searchMassiveByName(massiveItems, map, value) {
@@ -171,7 +182,7 @@ export function setDefaultStyle() {
    })
    if(section) {
       section.setStyle(function (feature) {
-         const item = sectionsData.find(item => +item.counter_id === +feature.getProperties()['Kontur_raq'])
+         const item = renderColors.data.find(item => +item.counter_id === +feature.getProperties()['Kontur_raq'])
          const level = item[featureFieldNames[moduleNumber]]
          return defaultStyle(
              recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
