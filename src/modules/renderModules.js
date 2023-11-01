@@ -155,6 +155,44 @@ export const levelTextRecommendation = [
    ]
 ]
 
+const exceptionText = [
+   [
+      "Juda Kam",
+      "Kam",
+      "O'rtacha",
+      "Ko'p",
+      "Juda Ko'p",
+   ],
+   [
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Kam</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Kam</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>O'rtacha</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Ko'p</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Ko'p</span></div>",
+   ],
+   [
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Kam</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Kam</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>O'rtacha</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Ko'p</span></div>",
+      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Ko'p</span></div>",
+   ],
+   [
+      "Juda Kam",
+      "Kam",
+      "O'rtacha",
+      "Ko'p",
+      "Juda Ko'p",
+   ],
+   [
+      "Juda Kam",
+      "Kam",
+      "O'rtacha",
+      "Ko'p",
+      "Juda Ko'p",
+   ],
+]
+
 export let features = null;
 
 export let activeFeaturesNames = null;
@@ -200,7 +238,7 @@ export function renderModules(modules) {
    )
 }
 
-function renderFeatures(modulesArray, wrapper, wrapper2, modules) {
+function renderFeatures(modulesArray, wrapper, wrapper2) {
 
    wrapper.innerHTML = renderItem(modulesArray, 4, 5, true)
 
@@ -231,8 +269,11 @@ function handleClickModules() {
                const featureModule = globalModules.filter(module => module.is_feature)[index]
                value = featureModule.id
                renderColors.changeFeaturesColorsWithRecommendedColors(value - 1)
-            } else renderColors.changeFeaturesColors(value)
-            changeColor(value, colorInformation)
+               changeColor(value, recommendedColorInformation)
+            } else {
+               renderColors.changeFeaturesColors(value)
+               changeColor(value, colorInformation)
+            }
             changeText(value, recommendationModule.is_recommendation?levelTextRecommendation:levelTextInformation, recommendationModule.is_recommendation)
             if(globalMap) clearInput(globalMap)
          }
@@ -248,7 +289,7 @@ function handleClickModules() {
       obj[value - 1].forEach(function(text, index) {
          const el = document.querySelectorAll(`.text_level_${index+1} span`)
          if(recommendation) {
-            el[0].innerText = levelTextInformation[0][index]
+            el[0].innerHTML = exceptionText[value - 1][index]
             el[1].innerText = text
          } else {
             el[0].innerText = text

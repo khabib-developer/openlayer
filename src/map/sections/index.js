@@ -20,12 +20,8 @@ export function drawSections(map) {
   map.on("click", (evt) => {
     sections.getFeatures(evt.pixel).then((features) => {
       if (features.length) {
-        const view = map.getView();
         setDefaultStyle()
         changeSelectedFeaturesStyle(features[0], map)
-        // view.fit(features[0].getGeometry().getExtent(), {
-        //   duration: 500,
-        // });
       }
     });
   });
