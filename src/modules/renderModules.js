@@ -234,10 +234,11 @@ function handleClickModules() {
                const featureModule = globalModules.filter(module => module.is_feature)[index]
                value = featureModule.id
                renderColors.changeFeaturesColorsWithRecommendedColors(value - 1)
+               changeColor(value, recommendedColorInformation)
             } else {
+               changeColor(value, colorInformation)
                renderColors.changeFeaturesColors(value)
             }
-            changeColor(value, colorInformation)
             changeText(value, recommendationModule.is_recommendation?levelTextRecommendation:levelTextInformation, recommendationModule.is_recommendation)
             if(globalMap) clearInput(globalMap)
          }
