@@ -23,7 +23,7 @@ const options = (labels,data, height) => ({
    },
    colors: ['#4267B2'],
    title: {
-      text: "Bugun soatlik harorat",
+      text: "Bugungi soatlik harorat\n",
       align: 'left'
    },
    labels,

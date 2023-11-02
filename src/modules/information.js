@@ -9,25 +9,25 @@ export const textInformation = ["Juda Kam", "Kam", "O'rtacha", "Ko'p", "Juda Ko'
 
 export const recommendationText = [
    [
-      "1050 tonna/35st",
-      "875 tonna/35st",
-      "700 tonna/35st",
-      "350 tonna/35st",
-      "175 tonna/35st",
+      "1050 tonna",
+      "875 tonna",
+      "700 tonna",
+      "350 tonna",
+      "175 tonna",
    ],
    [
-      "1050 tonna/35st",
-      "875 tonna/35st",
-      "700 tonna/35st",
-      "350 tonna/35st",
-      "175 tonna/35st",
+      "1050 tonna",
+      "875 tonna",
+      "700 tonna",
+      "350 tonna",
+      "175 tonna",
    ],
    [
-      "1050 tonna/35st",
-      "875 tonna/35st",
-      "700 tonna/35st",
-      "350 tonna/35st",
-      "175 tonna/35st",
+      "1050 tonna",
+      "875 tonna",
+      "700 tonna",
+      "350 tonna",
+      "175 tonna",
    ],
    [
       ["", "", "", "", "", ""],
@@ -38,11 +38,11 @@ export const recommendationText = [
 
    ],
    [
-      "30 tonna/ga",
-      "25 tonna/ga",
-      "20 tonna/ga",
-      "10 tonna/ga",
-      "5 tonna/ga",
+      "1050 tonna",
+      "875 tonna",
+      "700 tonna",
+      "350 tonna",
+      "175 tonna",
    ],
 ]
 
@@ -82,7 +82,7 @@ function giveRecommendations( item) {
 
       return (
           `<div class="flex justify-between">
-              <div class="capitalize md:text-xs text-sm">${module.name}: <span class="pl-2"> ${suggestion} </span></div>
+              <div class="capitalize md:text-xs text-sm">${module.name}: <span class="lowercase"> ${suggestion} </span></div>
               <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md border-2 border-black recommendation">
                   <div class="absolute transition-all w-[5px] h-full bg-black" style="left:${20*level - 5}%"></div>
               </div>

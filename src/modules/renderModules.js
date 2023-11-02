@@ -126,18 +126,19 @@ export const levelTextRecommendation = [
       "30 Tonna/ga",
    ],
    [
-      "G'o'za: 259 kg/ 35st - Bug'doy: 161 kg/ 35st",
-      "G'o'za: 200 kg/ 35st - Bug'doy: 126 kg/ 35st",
-      "G'o'za: 144 kg/ 35st - Bug'doy: 91 kg/ 35st",
-      "G'o'za: 88 kg/ 35st - Bug'doy: 53 kg/ 35st",
-      "G'o'za: 0,0 kg/ 35st - Bug'doy: 0.0 kg/ 35st",
+      "<div>G'o'za: 0,0 kg/ 35st </div><div> Bug'doy: 0.0 kg/ 35st</div>",
+      "<div>G'o'za: 88 kg/ 35st </div><div> Bug'doy: 53 kg/ 35st</div>",
+      "<div> G'o'za: 144 kg/ 35st </div><div> Bug'doy: 91 kg/ 35st</div>",
+      "<div> G'o'za: 200 kg/ 35st </div> <div> Bug'doy: 126 kg/ 35st </div>",
+      "<div>G'o'za: 259 kg/ 35st </div><div> Bug'doy: 161 kg/ 35st </div>",
+
    ],
    [
-      "G'o'za: 74 kg/ 35st - Bug'doy: 38 kg/ 35st",
-      "G'o'za: 59 kg/ 35st - Bug'doy: 28 kg/ 35st",
-      "G'o'za: 44 kg/ 35st - Bug'doy: 18 kg/ 35st",
-      "G'o'za: 29 kg/ 35st - Bug'doy: 14 kg/ 35st",
-      "G'o'za: 15 kg/ 35st - Bug'doy: 9 kg/ 35st",
+      "<div> G'o'za: 15 kg/ 35st </div><div> Bug'doy: 9 kg/ 35st </div>",
+      "<div> G'o'za: 29 kg/ 35st </div> <div> Bug'doy: 14 kg/ 35st </div>",
+      "<div>G'o'za: 44 kg/ 35st </div><div> Bug'doy: 18 kg/ 35st </div>",
+      "<div> G'o'za: 59 kg/ 35st </div><div> Bug'doy: 28 kg/ 35st </div>",
+      "<div>G'o'za: 74 kg/ 35st </div><div> Bug'doy: 38 kg/ 35st </div>",
    ],
    [
       "",
@@ -269,11 +270,10 @@ function handleClickModules() {
                const featureModule = globalModules.filter(module => module.is_feature)[index]
                value = featureModule.id
                renderColors.changeFeaturesColorsWithRecommendedColors(value - 1)
-               changeColor(value, recommendedColorInformation)
             } else {
                renderColors.changeFeaturesColors(value)
-               changeColor(value, colorInformation)
             }
+            changeColor(value, colorInformation)
             changeText(value, recommendationModule.is_recommendation?levelTextRecommendation:levelTextInformation, recommendationModule.is_recommendation)
             if(globalMap) clearInput(globalMap)
          }
@@ -287,15 +287,17 @@ function handleClickModules() {
    }
    function changeText(value, obj, recommendation) {
       obj[value - 1].forEach(function(text, index) {
-         const el = document.querySelectorAll(`.text_level_${index+1} span`)
+         const el = document.querySelectorAll(`.text_level_${index+1} .amount_text`)
+
          if(recommendation) {
             el[0].innerHTML = exceptionText[value - 1][index]
-            el[1].innerText = text
+            el[1].innerHTML = text
+
          } else {
             el[0].innerText = text
             el[1].innerText = ''
+
          }
-         el.innerHTML = text
       })
    }
 }
