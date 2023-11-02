@@ -9,25 +9,25 @@ export const textInformation = ["Juda Kam", "Kam", "O'rtacha", "Ko'p", "Juda Ko'
 
 export const recommendationText = [
    [
-      "1050 tonna",
-      "875 tonna",
-      "700 tonna",
-      "350 tonna",
-      "175 tonna",
+      "30 tonna",
+      "25 tonna",
+      "20 tonna",
+      "10 tonna",
+      "5 tonna",
    ],
    [
-      "1050 tonna",
-      "875 tonna",
-      "700 tonna",
-      "350 tonna",
-      "175 tonna",
+      "30 tonna",
+      "25 tonna",
+      "20 tonna",
+      "10 tonna",
+      "5 tonna",
    ],
    [
-      "1050 tonna",
-      "875 tonna",
-      "700 tonna",
-      "350 tonna",
-      "175 tonna",
+      "30 tonna",
+      "25 tonna",
+      "20 tonna",
+      "10 tonna",
+      "5 tonna",
    ],
    [
       ["", "", "", "", "", ""],
@@ -38,11 +38,11 @@ export const recommendationText = [
 
    ],
    [
-      "1050 tonna",
-      "875 tonna",
-      "700 tonna",
-      "350 tonna",
-      "175 tonna",
+      "30 tonna",
+      "25 tonna",
+      "20 tonna",
+      "10 tonna",
+      "5 tonna",
    ],
 ]
 
