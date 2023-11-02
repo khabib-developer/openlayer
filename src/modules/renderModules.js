@@ -126,19 +126,19 @@ export const levelTextRecommendation = [
       "30 Tonna/ga",
    ],
    [
-      "<div>G'o'za: 0,0 kg/ 35st </div><div> Bug'doy: 0.0 kg/ 35st</div>",
-      "<div>G'o'za: 88 kg/ 35st </div><div> Bug'doy: 53 kg/ 35st</div>",
-      "<div> G'o'za: 144 kg/ 35st </div><div> Bug'doy: 91 kg/ 35st</div>",
-      "<div> G'o'za: 200 kg/ 35st </div> <div> Bug'doy: 126 kg/ 35st </div>",
-      "<div>G'o'za: 259 kg/ 35st </div><div> Bug'doy: 161 kg/ 35st </div>",
+      "<div class='flex-1'> 0 kg/ 35st </div><div class='flex-1'> 0 kg/ 35st</div>",
+      "<div class='flex-1'> 88 kg/ 35st </div><div class='flex-1'> 53 kg/ 35st</div>",
+      "<div class='flex-1'>  144 kg/ 35st </div><div class='flex-1'> 91 kg/ 35st</div>",
+      "<div class='flex-1'>  200 kg/ 35st </div> <div class='flex-1'> 126 kg/ 35st </div>",
+      "<div class='flex-1'> 259 kg/ 35st </div><div class='flex-1'> 161 kg/ 35st </div>",
 
    ],
    [
-      "<div> G'o'za: 15 kg/ 35st </div><div> Bug'doy: 9 kg/ 35st </div>",
-      "<div> G'o'za: 29 kg/ 35st </div> <div> Bug'doy: 14 kg/ 35st </div>",
-      "<div>G'o'za: 44 kg/ 35st </div><div> Bug'doy: 18 kg/ 35st </div>",
-      "<div> G'o'za: 59 kg/ 35st </div><div> Bug'doy: 28 kg/ 35st </div>",
-      "<div>G'o'za: 74 kg/ 35st </div><div> Bug'doy: 38 kg/ 35st </div>",
+      "<div class='flex-1'> 15 kg/ 35st </div><div class='flex-1'> 9 kg/ 35st </div>",
+      "<div class='flex-1'> 29 kg/ 35st </div> <div class='flex-1'> 14 kg/ 35st </div>",
+      "<div class='flex-1'>44 kg/ 35st </div><div class='flex-1'> 18 kg/ 35st </div>",
+      "<div class='flex-1'> 59 kg/ 35st </div><div class='flex-1'> 28 kg/ 35st </div>",
+      "<div class='flex-1'>74 kg/ 35st </div><div class='flex-1'> 38 kg/ 35st </div>",
    ],
    [
       "",
@@ -156,44 +156,6 @@ export const levelTextRecommendation = [
    ]
 ]
 
-const exceptionText = [
-   [
-      "Juda Kam",
-      "Kam",
-      "O'rtacha",
-      "Ko'p",
-      "Juda Ko'p",
-   ],
-   [
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Kam</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Kam</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>O'rtacha</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Ko'p</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Ko'p</span></div>",
-   ],
-   [
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Kam</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Kam</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>O'rtacha</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Ko'p</span></div>",
-      "<div class='flex items-center gap-1 h-full'><img width='10%' src='../../static/cotton.png' /><img width='10%' src='../../static/wheat.png' /><span>Juda Ko'p</span></div>",
-   ],
-   [
-      "Juda Kam",
-      "Kam",
-      "O'rtacha",
-      "Ko'p",
-      "Juda Ko'p",
-   ],
-   [
-      "Juda Kam",
-      "Kam",
-      "O'rtacha",
-      "Ko'p",
-      "Juda Ko'p",
-   ],
-]
-
 export let features = null;
 
 export let activeFeaturesNames = null;
@@ -203,6 +165,8 @@ export let activeRecommendationModules = null;
 export const featureFieldNames = ["gumus", "fosfor", "kaliy", "shorlanish", "namlik"]
 
 let globalModules = null;
+
+const tableTitle = document.querySelector(".table-title")
 
 export function renderModules(modules) {
    const featuresWrapper = document.querySelector(".features")
@@ -287,16 +251,15 @@ function handleClickModules() {
    }
    function changeText(value, obj, recommendation) {
       obj[value - 1].forEach(function(text, index) {
-         const el = document.querySelectorAll(`.text_level_${index+1} .amount_text`)
-
+         const el = document.querySelector(`.text_level_${index+1}`)
          if(recommendation) {
-            el[0].innerHTML = exceptionText[value - 1][index]
-            el[1].innerHTML = text
-
+            if(value === 2 || value === 3) {
+               tableTitle.classList.remove("hidden")
+            } else tableTitle.classList.add("hidden")
+            el.innerHTML = `<div class="flex-1">${levelTextInformation[0][index]}</div>${text}`
          } else {
-            el[0].innerText = text
-            el[1].innerText = ''
-
+            tableTitle.classList.add("hidden")
+            el.innerText = text
          }
       })
    }

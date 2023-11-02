@@ -83,8 +83,8 @@ function giveRecommendations( item) {
       return (
           `<div class="flex justify-between">
               <div class="capitalize md:text-xs text-sm">${module.name}: <span class="lowercase"> ${suggestion} </span></div>
-              <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md border-2 border-black recommendation">
-                  <div class="absolute transition-all w-[5px] h-full bg-black" style="left:${20*level - 5}%"></div>
+              <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md h-[8px] border-2 border-black recommendation">
+                  <div class="absolute transition-all w-[5px] h-full  bg-black" style="left:${20*level - 5}%"></div>
               </div>
           </div>`
       )
