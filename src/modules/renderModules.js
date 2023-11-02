@@ -42,25 +42,26 @@ export const colorInformation = [
 
 export const recommendedColorInformation = [
    [
-      "#806000",
+      "#fff2cc",
+      "#ffe599",
+      "#ffd966",
       "#bf8f02",
-      "#ffd966",
-      "#ffd966",
-      "#ffd966",
+      "#806000",
    ],
    [
-      "#385623",
-      "#548135",
-      "#a8d08d",
-      "#c6e0b3",
+
       "#e2f0d9",
+      "#c6e0b3",
+      "#a8d08d",
+      "#548135",
+      "#385623",
    ],
    [
-      "#385623",
-      "#548135",
-      "#a8d08d",
-      "#c6e0b3",
       "#e2f0d9",
+      "#c6e0b3",
+      "#a8d08d",
+      "#548135",
+      "#385623",
    ],
    [
       "#d9e2f3",
@@ -71,11 +72,11 @@ export const recommendedColorInformation = [
       "#1f3864",
    ],
    [
-      "#806000",
+      "#fff2cc",
+      "#ffe599",
+      "#ffd966",
       "#bf8f02",
-      "#ffd966",
-      "#ffd966",
-      "#ffd966",
+      "#806000",
    ],
 ]
 
