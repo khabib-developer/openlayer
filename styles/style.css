@@ -68,28 +68,28 @@ header h1 {
 }
 
 .sidebar:first-child, .sidebar .sub-sidebar {
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.sidebar:-webkit-scrollbar-track {
-  border-radius: 10px;
-  background: rgba(0,0,0,0.1);
-}
-.sidebar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: rgba(0,0,0,0.2);
-}
-.sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.4);
-}
-.sidebar::-webkit-scrollbar-thumb:active {
-  background: rgba(0,0,0,0.9);
-}
+/*.sidebar::-webkit-scrollbar {*/
+/*  width: 6px;*/
+/*  height: 6px;*/
+/*}*/
+/*.sidebar:-webkit-scrollbar-track {*/
+/*  border-radius: 10px;*/
+/*  background: rgba(0,0,0,0.1);*/
+/*}*/
+/*.sidebar::-webkit-scrollbar-thumb {*/
+/*  border-radius: 10px;*/
+/*  background: rgba(0,0,0,0.2);*/
+/*}*/
+/*.sidebar::-webkit-scrollbar-thumb:hover {*/
+/*  background: rgba(0,0,0,0.4);*/
+/*}*/
+/*.sidebar::-webkit-scrollbar-thumb:active {*/
+/*  background: rgba(0,0,0,0.9);*/
+/*}*/
 
 @media only screen and (max-width: 1500px) {
   #map {
