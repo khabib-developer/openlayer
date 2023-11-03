@@ -8,6 +8,8 @@ export function activateMobile() {
 
    const secondSideBarBtn = document.querySelectorAll(".toggleSecondSideBar")
 
+   const additionalInfo = document.querySelector(".additional_info")
+
    secondSideBarBtn.forEach(function (element, index) {
       element.addEventListener("click", function (event) {
          toggleBtn()
@@ -21,6 +23,8 @@ export function activateMobile() {
       showSideBar(0, 1)
    })
    firstSideBarCloseBtn.addEventListener("click", () => hideSideBar(0))
+
+   additionalInfo.addEventListener("click", () => hideSideBar(1))
 
    function toggleBtn() {
       secondSideBarBtn.forEach(element => element.classList.toggle("hidden"))

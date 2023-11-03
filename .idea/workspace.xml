@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/src/map/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/renderColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/sections/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/sections/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mobile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +62,7 @@
       <workItem from="1698853118457" duration="11302000" />
       <workItem from="1698901991671" duration="4909000" />
       <workItem from="1698942387364" duration="1764000" />
-      <workItem from="1698989102934" duration="5809000" />
+      <workItem from="1698989102934" duration="6661000" />
     </task>
     <servers />
   </component>
