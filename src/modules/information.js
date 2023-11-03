@@ -75,6 +75,8 @@ export function renderInformation( item, massive) {
 function giveRecommendations( item) {
    const wrapper = document.querySelector(".recommendation-wrapper")
 
+   const left = [0, 25, 50, 75, 100]
+
    wrapper.innerHTML = activeRecommendationModules.map((module, index) => {
       const level = item[featureFieldNames[index]]
 
@@ -84,7 +86,7 @@ function giveRecommendations( item) {
           `<div class="flex justify-between">
               <div class="capitalize md:text-xs text-sm">${module.name}: <span class="lowercase"> ${suggestion} </span></div>
               <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md h-[8px] border-2 border-black recommendation">
-                  <div class="absolute transition-all w-[5px] h-full  bg-black" style="left:${20*level - 5}%"></div>
+                  <div class="absolute transition-all w-[5px] h-full  bg-black" style="left:${left[level]}%"></div>
               </div>
           </div>`
       )
