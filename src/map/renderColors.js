@@ -12,7 +12,7 @@ class RenderColors {
       const result = await service(`/api/modul/counter-db/`)
       if(result) {
          this.data = result
-         await delay(500)
+         // await delay(500)
          this.sections = sections.getProperties().source.getFeatures()
          this.changeFeaturesColors(value)
          return this.data

@@ -15,13 +15,19 @@ import {activeFeaturesNames} from "../modules/renderModules";
 import TileLayer from "ol/layer/Tile";
 import { XYZ } from 'ol/source'
 
-export const mapExtent = [
-   7608167.238671773, 4908957.917046178, 7669859.814263282, 4958395.798040829,
-];
+const mobile = window.innerWidth < 1024
+
+const mobileExtent = [
+   7617152.5362035271, 4885793.755150786,
+   7661683.8082642511, 4983186.584867953
+]
+
+export const mapExtent = mobile ? mobileExtent :
+    [ 7608167.238671773, 4908957.917046178, 7669859.814263282, 4958395.798040829];
 
 export const mapCenter = [7639018.313112488, 4933510.741777165];
 
-export const mapZoom = 12;
+export const mapZoom = mobile?0:12;
 
 export let sectionsData = null
 
@@ -96,7 +102,7 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
    }
 
    if (sectionsShouldBeDrew) {
-      const {sections} = drawSections(map);
+      const {sections} = await drawSections(map);
       const {massives} = drawMassives(map);
 
       globalMassives = massives
