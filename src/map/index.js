@@ -105,12 +105,21 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
          if (sections) {
             const defaultItem = sectionsData[0]
 
-            if (!defaultItem)
+            let section = null;
+
+            sections.getSource().forEachFeature(function (feature) {
+               if(+defaultItem.counter_id === feature.getProperties()["Kontur_raq"]) {
+                  section = feature
+               }
+            })
+
+            if (!defaultItem || !section)
                return
 
             renderInformation(
                 defaultItem,
-                massives.getProperties().source.getFeatureById(defaultItem.massiv).getProperties()['name']
+                massives.getProperties().source.getFeatureById(defaultItem.massiv).getProperties()['name'],
+                section.getProperties()['g']
             )
 
             searchForm.forEach(function (element, index) {

@@ -9,25 +9,25 @@ export const textInformation = ["Juda Kam", "Kam", "O'rtacha", "Ko'p", "Juda Ko'
 
 export const recommendationText = [
    [
-      "30 tonna",
-      "25 tonna",
-      "20 tonna",
-      "10 tonna",
-      "5 tonna",
+      "30",
+      "25",
+      "20",
+      "10",
+      "5",
    ],
    [
-      "30 tonna",
-      "25 tonna",
-      "20 tonna",
-      "10 tonna",
-      "5 tonna",
+      "30",
+      "25",
+      "20",
+      "10",
+      "5",
    ],
    [
-      "30 tonna",
-      "25 tonna",
-      "20 tonna",
-      "10 tonna",
-      "5 tonna",
+      "30",
+      "25",
+      "20",
+      "10",
+      "5",
    ],
    [
       ["", "", "", "", "", ""],
@@ -38,15 +38,15 @@ export const recommendationText = [
 
    ],
    [
-      "30 tonna",
-      "25 tonna",
-      "20 tonna",
-      "10 tonna",
-      "5 tonna",
+      "30",
+      "25",
+      "20",
+      "10",
+      "5",
    ],
 ]
 
-export function renderInformation( item, massive) {
+export function renderInformation( item, massive, area) {
    const wrapper = document.querySelector(".information-wrapper")
 
    const massiveNameContainer = document.querySelector(".selectedMassivName")
@@ -69,24 +69,26 @@ export function renderInformation( item, massive) {
       )
    }).join("")
 
-   giveRecommendations( item)
+   giveRecommendations( item, area)
 }
 
-function giveRecommendations( item) {
+function giveRecommendations( item, area) {
    const wrapper = document.querySelector(".recommendation-wrapper")
 
-   const left = [0, 25, 50, 75, 100]
+   const left = [95, 73, 48, 23, 0]
 
    wrapper.innerHTML = activeRecommendationModules.map((module, index) => {
       const level = item[featureFieldNames[index]]
 
-      const suggestion = index === 3 ? recommendationText[index][level-1][+item['mex'] - 1] : recommendationText[index][level-1]
+      let suggestion = index === 3 ? recommendationText[index][level-1][+item['mex'] - 1] : recommendationText[index][level-1]
+
+      if(index !== 3) suggestion = Math.floor(+suggestion * +area) + " t"
 
       return (
           `<div class="flex justify-between">
               <div class="capitalize md:text-xs text-sm">${module.name}: <span class="lowercase"> ${suggestion} </span></div>
               <div class="relative xl:my-1 my-0.5 w-1/3 rounded-md h-[8px] border-2 border-black recommendation">
-                  <div class="absolute transition-all w-[5px] h-full  bg-black" style="left:${left[level]}%"></div>
+                  <div class="absolute transition-all w-[5px] h-full  bg-black" style="left:${left[level - 1]}%; width: 5%"></div>
               </div>
           </div>`
       )

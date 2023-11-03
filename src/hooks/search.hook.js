@@ -114,7 +114,7 @@ export function changeSelectedFeaturesStyle(selectedSection, map) {
    if (renderColors.data && globalMassives.getProperties().source.getFeatures().length) {
       const item = renderColors.data.find(item => +item.counter_id === +section.getProperties()['Kontur_raq'])
 
-      renderInformation(item, selectedFeatureSearch.getProperties()['name'])
+      renderInformation(item, selectedFeatureSearch.getProperties()['name'], section.getProperties()['g'])
 
       const view = map.getView();
 
@@ -125,9 +125,10 @@ export function changeSelectedFeaturesStyle(selectedSection, map) {
          })
          const level = item[featureFieldNames[moduleNumber]]
 
+
          section.setStyle(
              selectedStyle(
-                 recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
+                 recommendation ? [...recommendedColorInformation[moduleNumber]].reverse()[level - 1] : colorInformation[moduleNumber][level - 1],
                  !recommendation?standOutColors[moduleNumber]:recommendationStandoutColor,
                  String(section.getProperties()['Kontur_raq']),
                  chooseTextColor(level, recommendation)
@@ -185,7 +186,7 @@ export function setDefaultStyle() {
          const item = renderColors.data.find(item => +item.counter_id === +feature.getProperties()['Kontur_raq'])
          const level = item[featureFieldNames[moduleNumber]]
          return defaultStyle(
-             recommendation ? recommendedColorInformation[moduleNumber][level - 1] : colorInformation[moduleNumber][level - 1],
+             recommendation ? [...recommendedColorInformation[moduleNumber]].reverse()[level - 1] : colorInformation[moduleNumber][level - 1],
              String(feature.getProperties()['Kontur_raq']),
              chooseTextColor(moduleNumber, recommendation)
          );

@@ -5,7 +5,7 @@ import {changeSelectedFeaturesStyle, setDefaultStyle} from "../../hooks/search.h
 
 export function drawSections(map) {
   const source = new VectorSource({
-     url: new URL("../../../data/Konturlar.json", import.meta.url),
+     url: new URL("../../../data/Kontur.json", import.meta.url),
      format: new GeoJSON(),
   })
 
