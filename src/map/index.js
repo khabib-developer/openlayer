@@ -7,13 +7,18 @@ import VectorSource from "ol/source/Vector";
 import {drawSections} from "./sections";
 import {drawMassives} from "./massives";
 import LayerGroup from "ol/layer/Group";
-import {clearInput, searchMassiveByName, searchSection} from "../hooks/search.hook";
+import {clearInput, searchSection} from "../hooks/search.hook";
 import {downloadHook} from "../hooks/download.hook";
 import renderColors from "./renderColors";
 import {renderInformation} from "../modules/information";
-import {activeFeaturesNames} from "../modules/renderModules";
+import {
+   activeFeaturesNames,
+   activeRecommendationModules,
+   findOutColorInformationIndex,
+   firstItemOfActiveModule
+} from "../modules/renderModules";
 import TileLayer from "ol/layer/Tile";
-import { XYZ } from 'ol/source'
+import {XYZ} from 'ol/source'
 
 const mobile = window.innerWidth < 1024
 
@@ -23,11 +28,11 @@ const mobileExtent = [
 ]
 
 export const mapExtent = mobile ? mobileExtent :
-    [ 7608167.238671773, 4908957.917046178, 7669859.814263282, 4958395.798040829];
+    [7608167.238671773, 4908957.917046178, 7669859.814263282, 4958395.798040829];
 
 export const mapCenter = [7639018.313112488, 4933510.741777165];
 
-export const mapZoom = mobile?0:12;
+export const mapZoom = 0;
 
 export let sectionsData = null
 
@@ -55,7 +60,7 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
    globalMap = map;
 
    const baseLayer = new TileLayer({
-      name:"basic",
+      name: "basic",
       source: new XYZ({
          url: 'http://mt1.google.com/vt/lyrs=s&hl=pl&&x={x}&y={y}&z={z}',
          crossOrigin: 'Anonymous'
@@ -106,15 +111,26 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
       const {massives} = drawMassives(map);
 
       globalMassives = massives
-      if (activeFeaturesNames.length) {
-         sectionsData = await renderColors.setData(sections, activeFeaturesNames[0].id)
+      if (activeFeaturesNames.length || activeRecommendationModules.length) {
+
+         const {activeModuleId, recommendation} = firstItemOfActiveModule()
+
+         sectionsData = await renderColors.setData(
+             sections,
+             findOutColorInformationIndex(
+                 recommendation,
+                 activeModuleId
+             ),
+             recommendation
+         )
+
          if (sections) {
             const defaultItem = sectionsData[0]
 
             let section = null;
 
             sections.getSource().forEachFeature(function (feature) {
-               if(+defaultItem.counter_id === feature.getProperties()["Kontur_raq"]) {
+               if (+defaultItem.counter_id === feature.getProperties()["Kontur_raq"]) {
                   section = feature
                }
             })

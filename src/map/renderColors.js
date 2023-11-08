@@ -8,13 +8,12 @@ class RenderColors {
    data = []
    sections = []
 
-   async setData(sections, value) {
+   async setData(sections, value, recommendation = false) {
       const result = await service(`/api/modul/counter-db/`)
       if(result) {
          this.data = result
-         // await delay(500)
          this.sections = sections.getProperties().source.getFeatures()
-         this.changeFeaturesColors(value)
+         recommendation?this.changeFeaturesColorsWithRecommendedColors(value - 1):this.changeFeaturesColors(value)
          return this.data
       }
       return null
@@ -25,7 +24,7 @@ class RenderColors {
       const result = await service(`/api/modul/counter-db/${param}`)
       if(result && result.length > 0) {
          this.data = result
-         recommendation?this.changeFeaturesColorsWithRecommendedColors(value):this.changeFeaturesColors(value + 1)
+         recommendation?this.changeFeaturesColorsWithRecommendedColors(value + 1):this.changeFeaturesColors(value + 1)
          removeLoader()
          return this.data
       }
@@ -48,7 +47,6 @@ class RenderColors {
    }
 
    changeFeaturesColorsWithRecommendedColors(index) {
-      console.log(index)
       this.sections.forEach((feature, i) => {
          const item = this.data.find(item => +item.counter_id === +feature.getProperties()["Kontur_raq"])
          const level = item[featureFieldNames[index]]

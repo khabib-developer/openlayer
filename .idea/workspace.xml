@@ -5,7 +5,8 @@
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/renderColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/sections/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/sections/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/renderModules.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/renderModules.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +60,9 @@
       <workItem from="1698901991671" duration="4909000" />
       <workItem from="1698942387364" duration="1764000" />
       <workItem from="1698989102934" duration="8785000" />
-      <workItem from="1699036307212" duration="1838000" />
+      <workItem from="1699036307212" duration="2143000" />
+      <workItem from="1699435626271" duration="47000" />
+      <workItem from="1699435839524" duration="12892000" />
     </task>
     <servers />
   </component>

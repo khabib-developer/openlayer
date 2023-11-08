@@ -128,18 +128,18 @@ export const levelTextRecommendation = [
    ],
    [
       "<div class='flex-1'> 0 kg/ga </div><div class='flex-1'> 0 kg/ga</div>",
-      "<div class='flex-1'> 88 kg/ga </div><div class='flex-1'> 106 kg/ga</div>",
-      "<div class='flex-1'>  144 kg/ga </div><div class='flex-1'> 182 kg/ga</div>",
-      "<div class='flex-1'>  200 kg/ga </div> <div class='flex-1'> 252 kg/ga </div>",
-      "<div class='flex-1'> 259 kg/ga </div><div class='flex-1'> 322 kg/ga </div>",
+      "<div class='flex-1'> 191 kg/ga </div><div class='flex-1'> 230 kg/ga</div>",
+      "<div class='flex-1'>  312 kg/ga </div><div class='flex-1'> 395 kg/ga</div>",
+      "<div class='flex-1'>  434 kg/ga </div> <div class='flex-1'> 547 kg/ga </div>",
+      "<div class='flex-1'> 562 kg/ga </div><div class='flex-1'> 699 kg/ga </div>",
 
    ],
    [
-      "<div class='flex-1'> 15 kg/ga </div><div class='flex-1'> 18 kg/ga </div>",
-      "<div class='flex-1'> 29 kg/ga </div> <div class='flex-1'> 28 kg/ga </div>",
-      "<div class='flex-1'>44 kg/ga </div><div class='flex-1'> 36 kg/ga </div>",
-      "<div class='flex-1'> 59 kg/ga </div><div class='flex-1'> 56 kg/ga </div>",
-      "<div class='flex-1'>74 kg/ga </div><div class='flex-1'> 76 kg/ga </div>",
+      "<div class='flex-1'> 25 kg/ga </div><div class='flex-1'> 30 kg/ga </div>",
+      "<div class='flex-1'> 42 kg/ga </div> <div class='flex-1'> 46 kg/ga </div>",
+      "<div class='flex-1'>73 kg/ga </div><div class='flex-1'> 60 kg/ga </div>",
+      "<div class='flex-1'> 98 kg/ga </div><div class='flex-1'> 93 kg/ga </div>",
+      "<div class='flex-1'>123 kg/ga </div><div class='flex-1'> 126 kg/ga </div>",
    ],
    [
       "",
@@ -200,21 +200,38 @@ export function renderModules(modules) {
        activeFeaturesNames,
        featuresWrapper,
        recommendationWrapper,
-       modules
    )
 }
 
 function renderFeatures(modulesArray, wrapper, wrapper2) {
 
-   wrapper.innerHTML = renderItem(modulesArray, 4, 5, true)
+   if(!activeFeaturesNames.length && !activeRecommendationModules.length) return
 
-   wrapper2.innerHTML = renderItem(activeRecommendationModules, 14, 15)
+   const {activeModuleId, recommendation} = firstItemOfActiveModule()
+
+   if(modulesArray.length) {
+      wrapper.innerHTML = renderItem(modulesArray, 4, 5, true)
+   }
+
+   if(activeRecommendationModules && activeRecommendationModules.length) {
+      wrapper2.innerHTML = renderItem(activeRecommendationModules, 14, 15)
+   }
+
+   const value = findOutColorInformationIndex(recommendation, activeModuleId)
+
+   if(recommendation) {
+      changeColor(value , recommendedColorInformation, true)
+      changeText(value, levelTextRecommendation, true)
+   } else {
+      changeColor(value, colorInformation)
+      changeText(value, levelTextInformation, false)
+   }
 
    function renderItem(array, id1, id2, feature = false) {
       return array.map(function(module, index) {
          return (`
             <div class="radiobtn text-sm ${(module.id === id1 || module.id === id2) ? 'mx-2':'mx-8'}">
-               <input type="radio" ${+module.id===modulesArray[0].id&&feature&&'checked'} id="${module.name}" name="module" value="${module.id}" />
+               <input type="radio" ${+module.id===+activeModuleId&&'checked'} id="${module.name}" name="module" value="${module.id}" />
                <label class="" for="${module.name}">${module.name}</label>
             </div>
          `)
@@ -231,38 +248,61 @@ function handleClickModules() {
          if(globalModules) {
             const recommendationModule = globalModules.find(module => +module.id === +value)
             if(recommendationModule.is_recommendation) {
-               const index = globalModules.filter(module => module.is_recommendation).findIndex(module => module.id === recommendationModule.id)
-               const featureModule = globalModules.filter(module => module.is_feature)[index]
-               value = featureModule.id
-               renderColors.changeFeaturesColorsWithRecommendedColors(value - 1)
-               changeColor(value, recommendedColorInformation)
+               value = findOutColorInformationIndex(true, value) - 1
+               renderColors.changeFeaturesColorsWithRecommendedColors(value)
+               changeColor(value + 1, recommendedColorInformation, true)
+               changeText(value + 1, levelTextRecommendation, true)
             } else {
-               changeColor(value, colorInformation)
                renderColors.changeFeaturesColors(value)
+               changeColor(value, colorInformation)
+               changeText(value, levelTextInformation, false)
             }
-            changeText(value, recommendationModule.is_recommendation?levelTextRecommendation:levelTextInformation, recommendationModule.is_recommendation)
             if(globalMap) clearInput(globalMap)
          }
       })
    })
-   function changeColor(value, obj) {
-      obj[value-1].forEach(function(color, index) {
-         const el = document.querySelector(`.color-information .level_${index+1}`)
-         if(el) el.style.backgroundColor = color
-      })
+
+}
+
+function changeColor(value, obj, recommendation = false) {
+   obj[value-1].forEach(function(color, index) {
+      const levelIndex = recommendation ? 6 - (index+1) : index+1
+      const el = document.querySelector(`.color-information .level_${levelIndex}`)
+      if(el) el.style.backgroundColor = color
+   })
+}
+
+function changeText(value, obj, recommendation) {
+   obj[value - 1].forEach(function(text, index) {
+      const levelIndex = recommendation ? 6 - (index+1) : index+1
+      const el = document.querySelector(`.text_level_${levelIndex}`)
+      if(recommendation) {
+         if(value === 2 || value === 3) {
+            tableTitle.classList.remove("hidden")
+         } else tableTitle.classList.add("hidden")
+         el.innerHTML = `<div class="flex-1">${levelTextInformation[0][index]}</div>${text}`
+      } else {
+         tableTitle.classList.add("hidden")
+         el.innerText = text
+      }
+   })
+}
+
+export function findOutColorInformationIndex(recommendation, value) {
+   if(recommendation) {
+      const recommendationModule = globalModules.find(module => +module.id === +value)
+      const index = globalModules.filter(module => module.is_recommendation).findIndex(module => module.id === recommendationModule.id)
+      const featureModule = globalModules.filter(module => module.is_feature)[index]
+      return featureModule.id
    }
-   function changeText(value, obj, recommendation) {
-      obj[value - 1].forEach(function(text, index) {
-         const el = document.querySelector(`.text_level_${index+1}`)
-         if(recommendation) {
-            if(value === 2 || value === 3) {
-               tableTitle.classList.remove("hidden")
-            } else tableTitle.classList.add("hidden")
-            el.innerHTML = `<div class="flex-1">${levelTextInformation[0][index]}</div>${text}`
-         } else {
-            tableTitle.classList.add("hidden")
-            el.innerText = text
-         }
-      })
-   }
+   return +value
+}
+
+export function firstItemOfActiveModule() {
+   const recommendation = !Boolean(activeFeaturesNames.length)
+   const activeModuleId = (!recommendation ?
+       activeFeaturesNames : activeRecommendationModules)
+       [0].id
+
+   return {activeModuleId, recommendation}
 }
