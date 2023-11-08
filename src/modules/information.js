@@ -98,12 +98,14 @@ function giveRecommendations(item, area) {
 
       return (
           `<div class="flex justify-between">
-              <div class="capitalize w-1/4 md:text-xs text-sm">${module.name}: </div>
+              <div class="capitalize flex-1 md:text-xs text-sm">${module.name}: </div>
               <div class="lowercase flex-1 ${(index===1 || index === 2) && 'flex'} text-center justify-between text-xs"> ${suggestion} </div>
-              <div class="relative ml-2 w-1/5 xl:my-1 my-0.5 rounded-md h-[8px] border-2 border-black recommendation">
-                  <div class="absolute transition-all w-[5px] h-full  bg-black" style="left:${left[level - 1]}%; width: 5%"></div>
-              </div>
+              
           </div>`
       )
    }).join("")
 }
+
+// <div className="relative ml-2 w-1/5 xl:my-1 my-0.5 rounded-md h-[8px] border-2 border-black recommendation">
+//    <div className="absolute transition-all w-[5px] h-full  bg-black" style="left:${left[level - 1]}%; width: 5%"></div>
+// </div>
