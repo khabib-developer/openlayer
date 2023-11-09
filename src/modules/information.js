@@ -76,7 +76,7 @@ function giveRecommendations(item, area) {
       let suggestion = index === 3 ? recommendationText[index][level - 1][+item['mex'] - 1] : recommendationText[index][level - 1]
 
       if (index === 0) {
-         suggestion = Math.floor(+suggestion * +area) + " t"
+         suggestion = `<div class="flex-1">${Math.floor(+suggestion * +area) + " t"}</div><div class="flex-1">${Math.floor(+suggestion * +area) + " t"}</div>`
       } else if(index === 1 || index === 2) {
          suggestion = suggestion.replace(/(\d+) kg\/ga/g, function (match) {
             return (Math.floor(parseInt(match, 10) * +area)).toString() + " kg";
@@ -89,14 +89,14 @@ function giveRecommendations(item, area) {
                            map(el => Number(el))
 
          const text = `${Math.floor(txtArray[0] * +area)} - ${Math.floor(txtArray[1] * +area)}`
-         suggestion = text + suggestion.slice(7)
+         suggestion = `<div class="flex-1">${text + suggestion.slice(7)}</div><div class="flex-1">${text + suggestion.slice(7)}</div>`
       }
 
 
       return (
           `<div class="flex justify-between">
               <div class="capitalize flex-1 md:text-xs text-sm">${module.name}: </div>
-              <div class="lowercase flex-1 ${(index===1 || index === 2) && 'flex'} text-center justify-between text-xs"> ${suggestion} </div>
+              <div class="lowercase flex-1  flex justify-between text-xs"> ${suggestion} </div>
               
           </div>`
       )
