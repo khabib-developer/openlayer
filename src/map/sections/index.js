@@ -19,7 +19,6 @@ export async function drawSections(map) {
   map.addLayer(sections);
 
   map.on("click", (evt) => {
-    console.dir(evt.coordinate)
     sections.getFeatures(evt.pixel).then((features) => {
       if (features.length) {
         setDefaultStyle()

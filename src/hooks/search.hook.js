@@ -3,7 +3,7 @@ import {renderInformation} from "../modules/information";
 import {globalMassives, mapExtent, mapZoom, sectionsData} from "../map";
 import {
    colorInformation,
-   featureFieldNames,
+   featureFieldNames, findOutColorInformationIndex,
    recommendedColorInformation
 } from "../modules/renderModules";
 import {chooseTextColor} from "../utils";
@@ -58,14 +58,16 @@ let section = null
 export function findOutActiveModule() {
    const modules = document.querySelectorAll("input[name='module']")
    let moduleNumber = 0
+   let recommendation = false
 
    modules.forEach((module, i) => {
-      if (module.checked) moduleNumber = i
+      if (module.checked) {
+         recommendation = Number(module.value) > 5
+         moduleNumber = findOutColorInformationIndex(recommendation, module.value) - 1
+      }
    })
 
-   const recommendation = moduleNumber > 4
-
-   moduleNumber = recommendation ? moduleNumber - 5 : moduleNumber
+   // moduleNumber = recommendation ? moduleNumber - 5 : moduleNumber
 
    return {recommendation, moduleNumber}
 }
@@ -80,8 +82,6 @@ export function searchSection(e, sections, massives, map, value) {
       searchMassiveByName(massives, map, value)
       return
    }
-
-   const {moduleNumber, recommendation} = findOutActiveModule()
 
    setDefaultStyle()
 
@@ -114,7 +114,11 @@ export function changeSelectedFeaturesStyle(selectedSection, map) {
    if (renderColors.data && globalMassives.getProperties().source.getFeatures().length) {
       const item = renderColors.data.find(item => +item.counter_id === +section.getProperties()['Kontur_raq'])
 
-      renderInformation(item, selectedFeatureSearch.getProperties()['name'], section.getProperties()['g'])
+      renderInformation(
+          item,
+          selectedFeatureSearch.getProperties()['name'],
+          section.getProperties()['g']
+      )
 
       const view = map.getView();
 

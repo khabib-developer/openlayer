@@ -19,8 +19,7 @@ export async function weather() {
   function dailyWeatherComponent(item, day) {
     return `
          <div class="flex items-center hover:bg-slate-100 cursor-pointer rounded-md w-full justify-between px-3">
-          <span class="w-1/3 text-sm text-start">
-           
+          <span class="w-1/3 text-xs text-start">
             ${days[day.getDay()]} ${months.map(month => month.slice(0, 3))[day.getMonth()]} ${day.getDate()}
           </span>
           <div class="flex w-2/3 items-center justify-end text-xs">
@@ -28,7 +27,7 @@ export async function weather() {
                  <img width="" alt="" class="w-1/4 " src="https://openweathermap.org/img/w/${
                    item.weather[0].icon
                  }.png" />
-                  <span class="text-base text-xs">
+                  <span class="text-xs">
                     ${Math.ceil(item.temp.max)} / ${Math.ceil(item.temp.min)}°C
                   </span>     
             </div>
