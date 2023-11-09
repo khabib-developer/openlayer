@@ -17,10 +17,10 @@ export const recommendationText = [
       "5",
    ],
    [
-       ...levelTextRecommendation[1]
+       ...levelTextRecommendation[1].reverse()
    ],
    [
-      ...levelTextRecommendation[2]
+      ...levelTextRecommendation[2].reverse()
    ],
    [
       ["", "", "", "", "", ""],
@@ -75,15 +75,12 @@ function giveRecommendations(item, area) {
 
       let suggestion = index === 3 ? recommendationText[index][level - 1][+item['mex'] - 1] : recommendationText[index][level - 1]
 
-
       if (index === 0) {
          suggestion = Math.floor(+suggestion * +area) + " t"
       } else if(index === 1 || index === 2) {
-
-         suggestion = suggestion.replace(/\d+/g, function (match) {
-            return (Math.floor(parseInt(match, 10) * +area)).toString();
+         suggestion = suggestion.replace(/(\d+) kg\/ga/g, function (match) {
+            return (Math.floor(parseInt(match, 10) * +area)).toString() + " kg";
          })
-
       }
       else if (index === 3) {
          const txtArray = suggestion.split("-").
