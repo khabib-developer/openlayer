@@ -70,7 +70,7 @@ export const recommendedColorInformation = [
       "#4976c7",
       "#2f5496",
       "#1f3864",
-   ],
+   ].reverse(),
    [
       "#fff2cc",
       "#ffe599",
@@ -250,7 +250,8 @@ function handleClickModules() {
             if(recommendationModule.is_recommendation) {
                value = findOutColorInformationIndex(true, value) - 1
                renderColors.changeFeaturesColorsWithRecommendedColors(value)
-               changeColor(value + 1, recommendedColorInformation, true)
+               console.log(value)
+               changeColor(value + 1, recommendedColorInformation, true, value === 3)
                changeText(value + 1, levelTextRecommendation, true)
             } else {
                renderColors.changeFeaturesColors(value)
@@ -264,9 +265,9 @@ function handleClickModules() {
 
 }
 
-function changeColor(value, obj, recommendation = false) {
+function changeColor(value, obj, recommendation = false, exception = false) {
    obj[value-1].forEach(function(color, index) {
-      const levelIndex = recommendation ? 6 - (index+1) : index+1
+      const levelIndex = recommendation ? !exception ? 6 - (index+1) : index+1 : index + 1
       const el = document.querySelector(`.color-information .level_${levelIndex}`)
       if(el) el.style.backgroundColor = color
    })

@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/Konturlar_new.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Massivlar_new.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/search.hook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/search.hook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map/massives/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/massives/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map/renderColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/sections/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/sections/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/weather/weather.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/weather/weather.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/renderModules.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/renderModules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +66,10 @@
       <workItem from="1699036307212" duration="2143000" />
       <workItem from="1699435626271" duration="47000" />
       <workItem from="1699435839524" duration="13562000" />
-      <workItem from="1699510644036" duration="4827000" />
+      <workItem from="1699510644036" duration="5844000" />
+      <workItem from="1699532521612" duration="699000" />
+      <workItem from="1700748860076" duration="101000" />
+      <workItem from="1700749233832" duration="1727000" />
     </task>
     <servers />
   </component>

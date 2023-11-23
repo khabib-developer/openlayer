@@ -43,7 +43,7 @@ export const selectedMassiveStyle = (text, strokeColor) => {
 export function drawMassives(map) {
    const massives = new VectorImageLayer({
       source: new VectorSource({
-         url: new URL("../../../data/Massivlar.json", import.meta.url),
+         url: new URL("../../../data/Massivlar_new.json", import.meta.url),
          format: new GeoJSON(),
       }),
       visible: true,
