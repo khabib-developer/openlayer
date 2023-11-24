@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/Konturlar_new.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Massivlar_new.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/massives/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/massives/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/renderColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/sections/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/sections/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/renderModules.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/renderModules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +59,8 @@
       <workItem from="1699510644036" duration="5844000" />
       <workItem from="1699532521612" duration="699000" />
       <workItem from="1700748860076" duration="101000" />
-      <workItem from="1700749233832" duration="1727000" />
+      <workItem from="1700749233832" duration="2292000" />
+      <workItem from="1700808323044" duration="120000" />
     </task>
     <servers />
   </component>
