@@ -13,6 +13,7 @@ class RenderColors {
 
   async setData(sections, value, recommendation = false) {
     const result = await service(`/api/modul/counter-db/`);
+    console.log(result.find(a => +a.counter_id === 4378))
     if (result) {
       this.data = result;
       this.sections = sections.getProperties().source.getFeatures();

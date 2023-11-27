@@ -101,7 +101,3 @@ function giveRecommendations(item, area) {
       )
    }).join("")
 }
-
-// <div className="relative ml-2 w-1/5 xl:my-1 my-0.5 rounded-md h-[8px] border-2 border-black recommendation">
-//    <div className="absolute transition-all w-[5px] h-full  bg-black" style="left:${left[level - 1]}%; width: 5%"></div>
-// </div>
