@@ -38,14 +38,12 @@ class RenderColors {
   }
 
   changeFeaturesColors(value) {
-    const arr = [];
 
     this.sections.forEach((feature, i) => {
       const item = this.data.find(
         (item) => +item.counter_id === +feature.getProperties()["Kontur_raq"]
       );
       if (item === undefined) {
-        arr.push(feature.getProperties()["Kontur_raq"]);
         return;
       }
       const level = item[featureFieldNames[value - 1]];
@@ -59,7 +57,6 @@ class RenderColors {
         );
       }
     });
-    console.log(JSON.stringify(arr));
   }
 
   changeFeaturesColorsWithRecommendedColors(index) {
@@ -67,6 +64,9 @@ class RenderColors {
       const item = this.data.find(
         (item) => +item.counter_id === +feature.getProperties()["Kontur_raq"]
       );
+      if (item === undefined) {
+        return;
+      }
       const level = item[featureFieldNames[index]];
       if (item) {
         feature.setStyle(
