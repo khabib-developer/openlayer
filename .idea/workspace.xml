@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/data/border-line.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/border_line.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/renderColors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/renderColors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/information.js" afterDir="false" />
-    </list>
+    <list default="true" id="25acb84a-6aec-46f1-9422-a8402f5fe8de" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +61,11 @@
       <workItem from="1700748860076" duration="101000" />
       <workItem from="1700749233832" duration="2292000" />
       <workItem from="1700808323044" duration="120000" />
-      <workItem from="1701076538004" duration="4505000" />
+      <workItem from="1701076538004" duration="5113000" />
+      <workItem from="1701151726554" duration="462000" />
+      <workItem from="1701159182800" duration="340000" />
+      <workItem from="1701173890508" duration="548000" />
+      <workItem from="1701239366098" duration="353000" />
     </task>
     <servers />
   </component>

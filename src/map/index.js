@@ -86,7 +86,7 @@ export async function drawMap(download, sectionsShouldBeDrew = true) {
          "stroke-color": "rgba(0, 0, 0,1)"
       },
       source: new VectorSource({
-         url: "../../data/border_line.json",
+         url: new URL("../../data/border_line.json", import.meta.url),
          format: new GeoJSON(),
       }),
    });
