@@ -9,7 +9,7 @@ import { delay } from "../../utils";
 
 export async function drawSections(map) {
   const source = new VectorSource({
-    url: new URL("../../../data/Kontur.json", import.meta.url),
+    url: new URL("../../../data/Konturlar_new.json", import.meta.url),
     format: new GeoJSON(),
   });
 
